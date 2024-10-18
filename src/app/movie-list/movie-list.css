@@ -1,0 +1,9 @@
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 1010px;
+    height: 1000px;
+    padding-top: 21px;
+    background-color: #FFFFFF;
+}
