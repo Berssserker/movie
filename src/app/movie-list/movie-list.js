@@ -6,15 +6,16 @@ import MovieCard from './movie-card/movie-card'
 
 export default class MovieList extends Component {
   render() {
-    return (
-      <section className="movie-list">
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-      </section>
-    )
+    const elements = this.props.movies.map((item) => {
+      const { id, ...itemProps } = item
+
+      return (
+        <MovieCard
+          key={id}
+          {...itemProps}
+        />
+      )
+    })
+    return <section className="movie-list">{elements}</section>
   }
 }

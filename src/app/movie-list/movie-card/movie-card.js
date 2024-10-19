@@ -7,15 +7,15 @@ export default class MovieCard extends Component {
   render() {
     const { Meta } = Card
     return (
-      <Card cover={<img alt="example" src="https://i.pinimg.com/736x/dc/b1/f2/dcb1f2f6059158b405294f011c691d31.jpg" />}>
+      <Card cover={<img alt="nenь" src={`https://image.tmdb.org/t/p/original${this.props.poster_path}`} />}>
         <Meta
-          title="Хуй в жопе"
-          description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book asdasdasdasfsadgf,sadflmsad;gkasdgmkasdkg"
+          title={this.props.title}
+          description={this.props.overview !== "" ?  this.props.overview : "nenь"}
         />
         <span className="date">March 5, 2020 </span>
-        <div>
-          <span className="genre">Action</span>
-          <span className="genre">Drama</span>
+        <div className="genre">
+          <span>Action</span>
+          <span>Drama</span>
         </div>
       </Card>
     )
