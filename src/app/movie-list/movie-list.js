@@ -11,6 +11,9 @@ export default class MovieList extends Component {
         <MovieCard />
         <MovieCard />
         <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
       </section>
     )
   }
