@@ -8,17 +8,17 @@ import MovieApi from './movie-API/movie-API'
 
 export default class App extends Component {
   state = {
-    movies: []
+    movies: [],
   }
 
-    async componentDidMount() {
-      const api = new MovieApi()
-      const movieData = await api.getMovie()
-      this.setState({ movies: movieData.results })
+  async componentDidMount() {
+    const api = new MovieApi()
+    const movieData = await api.getMovie()
+    this.setState({ movies: movieData.results })
   }
-  
+
   render() {
     console.log(this.state.movies)
-    return <MovieList movies={this.state.movies}/>
+    return <MovieList movies={this.state.movies} />
   }
 }
