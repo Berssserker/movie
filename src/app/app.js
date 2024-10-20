@@ -4,29 +4,17 @@ import 'normalize.css'
 import './app.css'
 
 import MovieList from './movie-list/movie-list'
+import MovieApi from './movie-API/movie-API'
 
 export default class App extends Component {
   state = {
     movies: []
   }
-  
-  url = `https://api.themoviedb.org/3/search/movie?api_key=dbabe22dcc1a65ea74c83602a2fa9d71&query=${encodeURIComponent('return')}`
 
-  getMovie = async (url) => {
-    const res = await fetch(url)
-    if (!res.ok) {
-      throw new Error ('sosi cock!')
-    }
-    const body = await res.json()
-    return body
-  }
-
-  async componentDidMount() {
-    try {
-      const movieData = await this.getMovie(this.url) 
-      this.setState({ movies: movieData.results })} catch (error) {
-      console.error(error);
-    }
+    async componentDidMount() {
+      const api = new MovieApi()
+      const movieData = await api.getMovie()
+      this.setState({ movies: movieData.results })
   }
   
   render() {
