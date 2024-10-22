@@ -45,6 +45,9 @@
     ]
   },
   "settings": {
+    "react": {
+      "version": "detect" // Добавлено для автоматического определения версии React
+    },
     "import/resolver": {
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"],
