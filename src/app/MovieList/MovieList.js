@@ -1,8 +1,8 @@
 import React from 'react'
 
-import './movie-list.css'
+import './MovieList.css'
 
-import MovieCard from './movie-card/movie-card'
+import MovieCard from './MovieCard/MovieCard'
 
 const MovieList = (props) => {
   const elements = props.movies.map((item) => {

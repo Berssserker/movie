@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from 'antd'
 import { format } from 'date-fns'
 
-import './movie-card.css'
+import './MovieCard.css'
 
 const MovieCard = (props) => {
   const { Meta } = Card

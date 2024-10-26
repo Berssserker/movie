@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
 import 'normalize.css'
-import './app.css'
+import './App.css'
 
-import MovieList from './movie-list/movie-list'
-import GetMovie from './movie-API/movie-API'
+import MovieList from './MovieList/MovieList'
+import GetMovie from './GetMovie/GetMovie'
 
 const App = () => {
   const [movies, setMovies] = useState([])
@@ -15,7 +15,7 @@ const App = () => {
         const data = await GetMovie()
         setMovies(data.results || [])
       } catch (error) {
-        console.error('Ошибка при получении данных:', error)
+        console.error(error)
         setMovies([])
       }
     }
