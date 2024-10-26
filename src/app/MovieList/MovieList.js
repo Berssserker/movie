@@ -2,15 +2,10 @@ import React from 'react'
 
 import './MovieList.css'
 
-import MovieCard from './MovieCard/MovieCard'
+import Elements from './Elements'
 
 const MovieList = ({ movies }) => {
-  const elements = movies?.map((item) => {
-    const { id, ...itemProps } = item
-
-    return <MovieCard key={id} {...itemProps} />
-  })
-  return <section className="movie-list">{elements}</section>
+  return <section className="movie-list">{Elements(movies)}</section>
 }
 
 export default MovieList
