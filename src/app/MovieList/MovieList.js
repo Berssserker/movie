@@ -4,8 +4,8 @@ import './MovieList.css'
 
 import MovieCard from './MovieCard/MovieCard'
 
-const MovieList = (props) => {
-  const elements = props.movies.map((item) => {
+const MovieList = ({ movies }) => {
+  const elements = movies?.map((item) => {
     const { id, ...itemProps } = item
 
     return <MovieCard key={id} {...itemProps} />
