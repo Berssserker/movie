@@ -1,24 +1,28 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import 'normalize.css'
 import './app.css'
 
 import MovieList from './movie-list/movie-list'
-import MovieApi from './movie-API/movie-API'
+import GetMovie from './movie-API/movie-API'
 
-export default class App extends Component {
-  state = {
-    movies: [],
-  }
+const App = () => {
+  const [movies, setMovies] = useState([])
 
-  async componentDidMount() {
-    const api = new MovieApi()
-    const movieData = await api.getMovie()
-    this.setState({ movies: movieData.results })
-  }
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const data = await GetMovie()
+        setMovies(data.results || [])
+      } catch (error) {
+        console.error('Ошибка при получении данных:', error)
+        setMovies([])
+      }
+    }
+    fetchMovies()
+  }, [])
 
-  render() {
-    console.log(this.state.movies)
-    return <MovieList movies={this.state.movies} />
-  }
+  return <MovieList movies={movies} />
 }
+
+export default App
