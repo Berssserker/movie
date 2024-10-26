@@ -3,7 +3,7 @@ const GetMovie = async (query = 'return') => {
   try {
     const res = await fetch(url)
     if (!res.ok) {
-      throw new Error(`${res.status} ${res.statusText}`)
+      throw new Error(`${res.status}, ${res.statusText}`)
     }
     const body = await res.json()
     return body

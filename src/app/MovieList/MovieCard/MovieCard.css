@@ -1,12 +1,10 @@
 div.ant-card {
-    box-sizing: border-box;
     display: flex;
     width: 451px;
     height: 279px;
     border: 0;
     box-shadow: 0px 4px 12px 0px #00000026;
     border-radius: 0;
-    position: static;
     margin: 37px 0 0 32px;
 }
 
@@ -35,10 +33,6 @@ div.ant-card:first-child, div.ant-card:nth-child(2) {
     width: 228px;
     margin: 10px 10px 49px 20px;
     padding: 0;
-}
-
-.ant-card .ant-card-body .ant-card-meta {
-    margin: 0;
 }
 
 .ant-card .ant-card-body .ant-card-meta .ant-card-meta-title {
