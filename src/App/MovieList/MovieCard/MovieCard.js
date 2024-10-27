@@ -14,9 +14,11 @@ const MovieCard = ({ poster_path, overview, title, release_date }) => {
     }
   }, [poster_path])
   return (
-    <Card cover={loading ? <Spin size="large" /> : <img alt="example" src={url + poster_path} />}>
-      <Meta title={title} description={overview !== '' ? overview : 'nenь'} />
-      <div className="date">{release_date !== '' ? format(new Date(release_date), 'MMMM d, yyyy') : 'nenь'}</div>
+    <Card cover={loading ? <Spin size="large" /> : <img src={url + poster_path} />}>
+      <Meta title={title} description={overview !== '' ? overview : 'Description not found :<'} />
+      <div className="date">
+        {release_date !== '' ? format(new Date(release_date), 'MMMM d, yyyy') : 'Date not found :<'}
+      </div>
       <div className="genre">
         <span>Action</span>
         <span>Drama</span>
