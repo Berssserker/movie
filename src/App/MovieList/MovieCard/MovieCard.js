@@ -1,20 +1,22 @@
-import React from 'react'
-import { Card } from 'antd'
+import React, { useState, useEffect } from 'react'
+import { Card, Spin } from 'antd'
 import { format } from 'date-fns'
 
 import './MovieCard.css'
 
-const MovieCard = ({ poster_path, title, overview, release_date }) => {
+const MovieCard = ({ poster_path, overview, title, release_date }) => {
+  const [loading, setLoading] = useState(true)
   const { Meta } = Card
   const url = 'https://image.tmdb.org/t/p/original'
-  const altUrl = 'https://avatars.mds.yandex.net/get-entity_search/2320096/993364518/S600xU_2x'
-  const formatDate = (date) => {
-    format(new Date(date), 'MMMM d, yyyy')
-  }
+  useEffect(() => {
+    if (poster_path || poster_path === '') {
+      setLoading(false)
+    }
+  }, [poster_path])
   return (
-    <Card cover={<img alt="nenь" src={poster_path !== null ? url + poster_path : altUrl} />}>
+    <Card cover={loading ? <Spin size="large" /> : <img alt="example" src={url + poster_path} />}>
       <Meta title={title} description={overview !== '' ? overview : 'nenь'} />
-      <span className="date">{release_date !== '' ? formatDate(release_date) : 'nenь'}</span>
+      <div className="date">{release_date !== '' ? format(new Date(release_date), 'MMMM d, yyyy') : 'nenь'}</div>
       <div className="genre">
         <span>Action</span>
         <span>Drama</span>
