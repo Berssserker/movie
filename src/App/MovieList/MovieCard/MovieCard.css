@@ -1,3 +1,11 @@
+.loading {
+    width: 451px;
+    height: 279px;
+    box-shadow: 0px 4px 12px 0px #00000026;
+    display: flex;
+    margin: 37px 0 0 32px;
+}
+
 .date {
     position: relative;
     width: 100%;
@@ -34,12 +42,16 @@ div.ant-card:first-child, div.ant-card:nth-child(2) {
 }
 
 div.ant-spin.ant-spin-spinning {
+    margin-top: 19px;
+    margin-left: 100px;
     display: flex;
     height: 100%;
+    width: 100%;
 }       
 
 .ant-spin-dot-holder {
     margin: auto;
+    height: 100%;
 }
 
 .ant-card .ant-card-cover img {
