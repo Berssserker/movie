@@ -15,13 +15,12 @@ const App = () => {
         const data = await GetMovie()
         setMovies(data.results || [])
       } catch (error) {
-        console.error(error)
+        console.log(error)
         setMovies([])
       }
     }
     fetchMovies()
   }, [])
-
   return <MovieList movies={movies} />
 }
 

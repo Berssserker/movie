@@ -1,37 +1,29 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Spin } from 'antd'
-import { format } from 'date-fns'
+
+import MovieLoading from './MovieCardLoading/MovieLoading'
+import MovieSucces from './MovieCardSucces/MovieCardSucces'
+import MovieError from './MovieCardError/MovieCardError'
 
 import './MovieCard.css'
 
-const MovieCard = (props) => {
+const MovieCard = ({ poster_path, overview, title, release_date }) => {
   const [loading, setLoading] = useState(true)
-  const { Meta } = Card
-  const url = 'https://image.tmdb.org/t/p/original'
+  const [error, setError] = useState(false)
   useEffect(() => {
-    if (props) {
+    if (!poster_path && !overview && !title && !release_date) {
+      setError(true)
+      setLoading(false)
+    } else {
       setLoading(false)
     }
-  }, [props])
+  }, [poster_path, overview, title, release_date])
   if (loading) {
-    return (
-      <Card>
-        <Spin size="large" />
-      </Card>
-    )
+    return <MovieLoading />
   }
-  return (
-    <Card cover={<img alt="Poster" src={url + props.poster_path} />}>
-      <Meta title={props.title} description={props.overview !== '' ? props.overview : 'Description not found :<'} />
-      <div className="date">
-        {props.release_date !== '' ? format(new Date(props.release_date), 'MMMM d, yyyy') : 'Date not found :<'}
-      </div>
-      <div className="genre">
-        <span>Action</span>
-        <span>Drama</span>
-      </div>
-    </Card>
-  )
+  if (error) {
+    return <MovieError />
+  }
+  return <MovieSucces poster_path={poster_path} overview={overview} title={title} release_date={release_date} />
 }
 
 export default MovieCard
