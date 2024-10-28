@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Spin } from 'antd'
 
-const MovieLoading = () => {
+const MovieCardLoading = () => {
   return (
     <Card>
       <Spin size="large" />
@@ -9,4 +9,4 @@ const MovieLoading = () => {
   )
 }
 
-export default MovieLoading
+export default MovieCardLoading

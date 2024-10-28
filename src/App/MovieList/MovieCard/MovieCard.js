@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-import MovieLoading from './MovieCardLoading/MovieLoading'
-import MovieSucces from './MovieCardSucces/MovieCardSucces'
-import MovieError from './MovieCardError/MovieCardError'
+import MovieCardLoading from './MovieCardLoading/MovieLoading'
+import MovieCardSucces from './MovieCardSucces/MovieCardSucces'
+import MovieCardError from './MovieCardError/MovieCardError'
 
 import './MovieCard.css'
 
@@ -18,12 +18,12 @@ const MovieCard = ({ poster_path, overview, title, release_date }) => {
     }
   }, [poster_path, overview, title, release_date])
   if (loading) {
-    return <MovieLoading />
+    return <MovieCardLoading />
   }
   if (error) {
-    return <MovieError />
+    return <MovieCardError />
   }
-  return <MovieSucces poster_path={poster_path} overview={overview} title={title} release_date={release_date} />
+  return <MovieCardSucces poster_path={poster_path} overview={overview} title={title} release_date={release_date} />
 }
 
 export default MovieCard

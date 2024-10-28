@@ -1,6 +1,6 @@
 import { Alert, Card } from 'antd'
 
-const MovieError = () => {
+const MovieCardError = () => {
   return (
     <Card>
       <Alert message="Ooops!" description="Something went wrong." type="warning" showIcon />
@@ -8,4 +8,4 @@ const MovieError = () => {
   )
 }
 
-export default MovieError
+export default MovieCardError

@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from 'antd'
 import { format } from 'date-fns'
 
-const MovieSucces = ({ poster_path, overview, title, release_date }) => {
+const MovieCardSucces = ({ poster_path, overview, title, release_date }) => {
   const { Meta } = Card
   const url = 'https://image.tmdb.org/t/p/original'
   const plug = 'https://i1.sndcdn.com/artworks-Bg54D6aCmjdNZLMh-9lWVgg-t500x500.jpg'
@@ -20,4 +20,4 @@ const MovieSucces = ({ poster_path, overview, title, release_date }) => {
   )
 }
 
-export default MovieSucces
+export default MovieCardSucces
