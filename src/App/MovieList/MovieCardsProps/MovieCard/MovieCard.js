@@ -17,13 +17,13 @@ const MovieCard = ({ poster_path, overview, title, release_date }) => {
       setLoading(false)
     }
   }, [poster_path, overview, title, release_date])
-  if (loading) {
-    return <MovieCardLoading />
-  }
-  if (error) {
-    return <MovieCardError />
-  }
-  return <MovieCardSucces poster_path={poster_path} overview={overview} title={title} release_date={release_date} />
+  return loading ? (
+    <MovieCardLoading />
+  ) : error ? (
+    <MovieCardError />
+  ) : (
+    <MovieCardSucces poster_path={poster_path} overview={overview} title={title} release_date={release_date} />
+  )
 }
 
 export default MovieCard
