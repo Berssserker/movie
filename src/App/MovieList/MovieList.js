@@ -3,9 +3,15 @@ import React from 'react'
 import './MovieList.css'
 
 import Elements from './Elements'
+import OfflineMessage from './OfflineMessage/OfflineMessage'
+import ErrorMessage from './ErrorMessage/ErrorMessage'
 
-const MovieList = ({ movies }) => {
-  return <section className="movie-list">{Elements(movies)}</section>
+const MovieList = ({ moviesData, isOnline, error }) => {
+  return (
+    <section className="movie-list">
+      {!isOnline ? <OfflineMessage /> : error ? <ErrorMessage /> : Elements(moviesData)}
+    </section>
+  )
 }
 
 export default MovieList
