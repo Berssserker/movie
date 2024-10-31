@@ -1,0 +1,12 @@
+.search {
+    width: 938px;
+    height: 40px;
+    margin: 13px auto 0 auto;
+    border: 1px solid #D9D9D9;
+    outline: none;
+    font: Inter UI;
+    font-size: 16px;
+    line-height: 22px;
+    padding-left: 12px;
+    border-radius: 4px;
+}

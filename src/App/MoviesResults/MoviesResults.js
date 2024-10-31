@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const Movies = (callback, set) => {
+const MoviesResults = (callback, set) => {
   useEffect(() => {
     const FetchMovies = async () => {
       try {
@@ -15,4 +15,4 @@ const Movies = (callback, set) => {
   }, [])
 }
 
-export default Movies
+export default MoviesResults

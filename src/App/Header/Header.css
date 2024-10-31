@@ -1,0 +1,6 @@
+.header {
+    padding-top: 13px;
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+}
