@@ -5,11 +5,11 @@ import './Header.css'
 import Tabs from './Tabs/Tabs'
 import Search from './Search/Search'
 
-const Header = () => {
+const Header = ({ searchMovies }) => {
   return (
     <section className="header">
       <Tabs />
-      <Search />
+      <Search searchMovies={searchMovies} />
     </section>
   )
 }
