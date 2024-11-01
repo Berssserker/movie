@@ -1,4 +1,5 @@
 const MoviesResults = (callback, setData, text, setError, setLoading) => {
+  setError(false)
   if (text) {
     setLoading(true)
   }
