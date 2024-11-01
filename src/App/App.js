@@ -8,7 +8,6 @@ import MovieList from './MovieList/MovieList'
 import GetMovie from './GetMovie/GetMovie'
 import MoviesResults from './MoviesResults/MoviesResults'
 import NetworStatus from './NetworkStatus/NetworkStatus'
-import MoviesError from './MoviesError/MoviesError'
 
 const App = () => {
   const [moviesData, setMoviesData] = useState(null)
@@ -19,18 +18,13 @@ const App = () => {
     setText(value.trim())
   }
   useEffect(() => {
-    MoviesResults(GetMovie, setMoviesData, text)
-  }, [text, moviesData])
+    MoviesResults(GetMovie, setMoviesData, text, setError)
+  }, [text])
 
   useEffect(() => {
     NetworStatus(setIsOnline)
   }, [isOnline])
 
-  // const error = useMoviesError(moviesData, text)
-
-  useEffect(() => {
-    MoviesError(moviesData, setError, text)
-  }, [moviesData, text])
   return (
     <div className="movie">
       <Header searchMovies={searchMovies} />

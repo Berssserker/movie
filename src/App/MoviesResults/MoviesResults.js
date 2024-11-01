@@ -1,12 +1,17 @@
-const MoviesResults = (callback, set, text) => {
+const MoviesResults = (callback, setData, text, setError) => {
   const timeoutId = setTimeout(() => {
     const FetchMovies = async () => {
       try {
         const data = await callback(text) // Передаем text в callback
-        set(data.results || [])
+        setData(data.results || [])
+        if (data.results !== null && data.results.length === 0 && text !== '') {
+          setError(true)
+        } else {
+          setError(false)
+        }
       } catch (error) {
         console.log(error)
-        set([])
+        setData([])
       }
     }
     FetchMovies()
