@@ -20,11 +20,9 @@ const App = () => {
   useEffect(() => {
     MoviesResults(GetMovie, setMoviesData, text, setError)
   }, [text])
-
   useEffect(() => {
     NetworStatus(setIsOnline)
   }, [isOnline])
-
   return (
     <div className="movie">
       <Header searchMovies={searchMovies} />
