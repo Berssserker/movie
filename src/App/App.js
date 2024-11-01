@@ -14,11 +14,12 @@ const App = () => {
   const [isOnline, setIsOnline] = useState(true)
   const [error, setError] = useState(false)
   const [text, setText] = useState('')
+  const [loading, setLoading] = useState(false)
   const searchMovies = (value) => {
     setText(value.trim())
   }
   useEffect(() => {
-    MoviesResults(GetMovie, setMoviesData, text, setError)
+    MoviesResults(GetMovie, setMoviesData, text, setError, setLoading)
   }, [text])
   useEffect(() => {
     NetworStatus(setIsOnline)
@@ -26,7 +27,7 @@ const App = () => {
   return (
     <div className="movie">
       <Header searchMovies={searchMovies} />
-      <MovieList moviesData={moviesData} isOnline={isOnline} error={error} />
+      <MovieList loading={loading} moviesData={moviesData} isOnline={isOnline} error={error} />
     </div>
   )
 }

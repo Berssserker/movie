@@ -5,11 +5,12 @@ import './MovieList.css'
 import MovieCardsProps from './MovieCardsProps/MovieCardsProps'
 import OfflineMessage from './OfflineMessage/OfflineMessage'
 import ErrorMessage from './ErrorMessage/ErrorMessage'
+import Loading from './Loading/Loading'
 
-const MovieList = ({ moviesData, isOnline, error }) => {
+const MovieList = ({ loading, moviesData, isOnline, error }) => {
   return (
     <section className="movie-list">
-      {!isOnline ? <OfflineMessage /> : error ? <ErrorMessage /> : MovieCardsProps(moviesData)}
+      {loading ? <Loading /> : !isOnline ? <OfflineMessage /> : error ? <ErrorMessage /> : MovieCardsProps(moviesData)}
     </section>
   )
 }

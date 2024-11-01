@@ -3,7 +3,10 @@ body {
 }
 
 .movie {
+    flex-direction: column;
+    display: flex;
     margin: auto;
     width: 1010px;
+    min-height: 100vh;
     background-color: #FFFFFF;
 }
