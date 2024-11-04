@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^14.5.2",
     "antd": "^5.21.4",
     "date-fns": "^4.1.0",
+    "lodash.debounce": "^4.0.8",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",

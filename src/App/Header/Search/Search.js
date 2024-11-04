@@ -4,9 +4,7 @@ import './Search.css'
 
 const Search = ({ searchMovies }) => {
   const onSearch = (e) => {
-    setTimeout(() => {
-      searchMovies(e.target.value)
-    }, 1000)
+    searchMovies(e.target.value)
   }
   return <input className="search" type="text" placeholder="Type to search..." onChange={onSearch} />
 }

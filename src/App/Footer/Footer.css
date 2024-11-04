@@ -1,0 +1,12 @@
+.movie ul.ant-pagination.ant-pagination-center {
+    margin-bottom: 17px;
+}
+
+.movie ul.ant-pagination.ant-pagination-center li.ant-pagination-item.ant-pagination-item-active {
+    background-color: #1890FF;
+    
+}
+
+.movie ul.ant-pagination.ant-pagination-center li.ant-pagination-item.ant-pagination-item-active a {
+    color: #FFFFFF;
+}

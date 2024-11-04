@@ -1,33 +1,30 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import 'normalize.css'
 import './App.css'
 
 import Header from './Header/Header'
 import MovieList from './MovieList/MovieList'
-import GetMovie from './GetMovie/GetMovie'
-import MoviesResults from './MoviesResults/MoviesResults'
-import NetworStatus from './NetworkStatus/NetworkStatus'
+import useFetchMovies from './useFetchMovies/useFetchMovies'
+import useNetworStatus from './useNetworkStatus/useNetworkStatus'
+import Footer from './Footer/Footer'
 
 const App = () => {
-  const [moviesData, setMoviesData] = useState(null)
-  const [isOnline, setIsOnline] = useState(true)
-  const [error, setError] = useState(false)
   const [text, setText] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [page, setPage] = useState('1')
   const searchMovies = (value) => {
     setText(value.trim())
   }
-  useEffect(() => {
-    MoviesResults(GetMovie, setMoviesData, text, setError, setLoading)
-  }, [text])
-  useEffect(() => {
-    NetworStatus(setIsOnline)
-  }, [isOnline])
+  const updatePage = (number) => {
+    setPage(number.toString())
+  }
+  const { moviesData, error, loading } = useFetchMovies(text, page)
+  const { isOnline } = useNetworStatus()
   return (
     <div className="movie">
-      <Header searchMovies={searchMovies} />
+      <Header page={page} searchMovies={searchMovies} />
       <MovieList loading={loading} moviesData={moviesData} isOnline={isOnline} error={error} />
+      <Footer updatePage={updatePage} />
     </div>
   )
 }
