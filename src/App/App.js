@@ -12,18 +12,22 @@ import Footer from './Footer/Footer'
 const App = () => {
   const [text, setText] = useState('')
   const [page, setPage] = useState('1')
+  const [tab, setTab] = useState(true)
+  const { moviesData, error, loading } = useFetchMovies(text, page)
+  const { isOnline } = useNetworStatus()
   const searchMovies = (value) => {
     setText(value.trim())
   }
-  const updatePage = (number) => {
-    setPage(number.toString())
+  const updatePage = (value) => {
+    setPage(value.toString())
   }
-  const { moviesData, error, loading } = useFetchMovies(text, page)
-  const { isOnline } = useNetworStatus()
+  const changeTab = (value) => {
+    setTab(value)
+  }
   return (
     <div className="movie">
-      <Header text={text} page={page} searchMovies={searchMovies} />
-      <Search loading={loading} moviesData={moviesData} isOnline={isOnline} error={error} />
+      <Header changeTab={changeTab} text={text} page={page} searchMovies={searchMovies} />
+      {tab ? <Search loading={loading} moviesData={moviesData} isOnline={isOnline} error={error} /> : null}
       {moviesData.length > 0 ? <Footer updatePage={updatePage} /> : null}
     </div>
   )

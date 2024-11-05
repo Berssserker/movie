@@ -5,10 +5,10 @@ import './Header.css'
 import Tabs from './Tabs/Tabs'
 import SearchBar from './SearchBar/SearchBar'
 
-const Header = ({ text, searchMovies }) => {
+const Header = ({ changeTab, text, searchMovies }) => {
   return (
     <section className="header">
-      <Tabs />
+      <Tabs changeTab={changeTab} />
       <SearchBar text={text} searchMovies={searchMovies} />
     </section>
   )
