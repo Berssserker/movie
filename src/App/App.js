@@ -24,7 +24,7 @@ const App = () => {
     <div className="movie">
       <Header page={page} searchMovies={searchMovies} />
       <MovieList loading={loading} moviesData={moviesData} isOnline={isOnline} error={error} />
-      <Footer updatePage={updatePage} />
+      {moviesData.length > 0 ? <Footer updatePage={updatePage} /> : null}
     </div>
   )
 }
