@@ -3,13 +3,13 @@ import React from 'react'
 import './Header.css'
 
 import Tabs from './Tabs/Tabs'
-import Search from './Search/Search'
+import SearchBar from './SearchBar/SearchBar'
 
 const Header = ({ searchMovies }) => {
   return (
     <section className="header">
       <Tabs />
-      <Search searchMovies={searchMovies} />
+      <SearchBar searchMovies={searchMovies} />
     </section>
   )
 }
