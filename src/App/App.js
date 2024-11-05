@@ -19,7 +19,7 @@ const App = () => {
   const { moviesData, error, loading } = useFetchMovies(text, page)
   const { isOnline } = useNetworStatus()
   const searchMovies = (value) => {
-    setText(value.trim())
+    setText(value)
   }
   const updatePage = (value) => {
     setPage(value.toString())
@@ -32,7 +32,7 @@ const App = () => {
       <Header changeTab={changeTab} text={text} page={page} searchMovies={searchMovies} />
       {tab ? <Search text={text} searchMovies={searchMovies} moviesData={moviesData} /> : null}
       {loading ? <Loading /> : !isOnline ? <OfflineMessage /> : error ? <ErrorMessage /> : null}
-      {moviesData.length > 0 ? <Footer updatePage={updatePage} /> : null}
+      <Footer updatePage={updatePage} />
     </div>
   )
 }

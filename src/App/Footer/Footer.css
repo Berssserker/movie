@@ -1,5 +1,5 @@
 .movie ul.ant-pagination.ant-pagination-center {
-    margin-bottom: 17px;
+    margin: auto 0 17px 0;
 }
 
 .movie ul.ant-pagination.ant-pagination-center li.ant-pagination-item.ant-pagination-item-active {

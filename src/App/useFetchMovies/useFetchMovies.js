@@ -8,6 +8,7 @@ const useFetchMovies = (text, page) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   useEffect(() => {
+    setMoviesData([])
     if (text) {
       setLoading(true)
     }
