@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import 'normalize.css'
 import './App.css'
 
+import Search from './Search/Search'
 import Header from './Header/Header'
-import MovieList from './MovieList/MovieList'
 import useFetchMovies from './useFetchMovies/useFetchMovies'
 import useNetworStatus from './useNetworkStatus/useNetworkStatus'
 import Footer from './Footer/Footer'
@@ -23,7 +23,7 @@ const App = () => {
   return (
     <div className="movie">
       <Header page={page} searchMovies={searchMovies} />
-      <MovieList loading={loading} moviesData={moviesData} isOnline={isOnline} error={error} />
+      <Search loading={loading} moviesData={moviesData} isOnline={isOnline} error={error} />
       {moviesData.length > 0 ? <Footer updatePage={updatePage} /> : null}
     </div>
   )
