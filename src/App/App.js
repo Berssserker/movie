@@ -22,7 +22,7 @@ const App = () => {
   const { isOnline } = useNetworStatus()
   return (
     <div className="movie">
-      <Header page={page} searchMovies={searchMovies} />
+      <Header text={text} page={page} searchMovies={searchMovies} />
       <Search loading={loading} moviesData={moviesData} isOnline={isOnline} error={error} />
       {moviesData.length > 0 ? <Footer updatePage={updatePage} /> : null}
     </div>
