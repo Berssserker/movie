@@ -1,15 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './Header.css'
 
-import Tabs from './Tabs/Tabs'
-import SearchBar from './SearchBar/SearchBar'
-
-const Header = ({ changeTab, text, searchMovies }) => {
+const Header = ({ changeTab }) => {
+  const [active, setActive] = useState(true)
+  const onChangeTab = (value) => {
+    changeTab(value)
+    setActive(value)
+  }
   return (
     <section className="header">
-      <Tabs changeTab={changeTab} />
-      <SearchBar text={text} searchMovies={searchMovies} />
+      <div className="tabs">
+        <span
+          onClick={() => {
+            onChangeTab(true)
+          }}
+          className={active ? 'active' : ''}
+        >
+          Search
+        </span>
+        <span
+          onClick={() => {
+            onChangeTab(false)
+          }}
+          className={!active ? 'active' : ''}
+        >
+          Rated
+        </span>
+      </div>
     </section>
   )
 }

@@ -8,6 +8,9 @@ import Header from './Header/Header'
 import useFetchMovies from './useFetchMovies/useFetchMovies'
 import useNetworStatus from './useNetworkStatus/useNetworkStatus'
 import Footer from './Footer/Footer'
+import OfflineMessage from './OfflineMessage/OfflineMessage'
+import ErrorMessage from './ErrorMessage/ErrorMessage'
+import Loading from './Loading/Loading'
 
 const App = () => {
   const [text, setText] = useState('')
@@ -27,7 +30,8 @@ const App = () => {
   return (
     <div className="movie">
       <Header changeTab={changeTab} text={text} page={page} searchMovies={searchMovies} />
-      {tab ? <Search loading={loading} moviesData={moviesData} isOnline={isOnline} error={error} /> : null}
+      {tab ? <Search text={text} searchMovies={searchMovies} moviesData={moviesData} /> : null}
+      {loading ? <Loading /> : !isOnline ? <OfflineMessage /> : error ? <ErrorMessage /> : null}
       {moviesData.length > 0 ? <Footer updatePage={updatePage} /> : null}
     </div>
   )

@@ -1,9 +1,17 @@
 import React from 'react'
 
-import MovieList from './MovieList/MovieList'
+import './Search.css'
 
-const Search = ({ loading, moviesData, isOnline, error }) => {
-  return <MovieList loading={loading} moviesData={moviesData} isOnline={isOnline} error={error} />
+import MovieList from './MovieList/MovieList'
+import SearchBar from './SearchBar/SearchBar'
+
+const Search = ({ text, searchMovies, moviesData }) => {
+  return (
+    <div className="search">
+      <SearchBar text={text} searchMovies={searchMovies} />
+      <MovieList moviesData={moviesData} />
+    </div>
+  )
 }
 
 export default Search

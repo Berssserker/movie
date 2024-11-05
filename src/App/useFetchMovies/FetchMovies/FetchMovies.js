@@ -1,6 +1,6 @@
 import GetMovie from './GetMovie/GetMovie'
 
-const MoviesData = async (setMoviesData, text, setError, setLoading, page) => {
+const FetchMovies = async (setMoviesData, text, setError, setLoading, page) => {
   setError(false)
   try {
     const data = await GetMovie(text, page)
@@ -16,4 +16,4 @@ const MoviesData = async (setMoviesData, text, setError, setLoading, page) => {
   }
 }
 
-export default MoviesData
+export default FetchMovies
