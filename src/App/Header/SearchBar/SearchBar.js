@@ -8,7 +8,7 @@ const SearchBar = ({ text, searchMovies }) => {
   }
   return (
     <input
-      className="search"
+      className="search-bar"
       type="text"
       value={text}
       placeholder="Type to search..."
