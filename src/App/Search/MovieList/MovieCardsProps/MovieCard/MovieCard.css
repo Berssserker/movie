@@ -5,18 +5,15 @@ div .ant-alert {
 }
 
 .date {
-    position: relative;
     width: 100%;
     color: #827E7E;
     font-size: 12px;
     line-height: 22px;
     font-family: inter UI;
-    bottom: 185px;
 }
 
 .genre {
-    position: relative;
-    bottom: 180px;
+    margin-top: 7px;
 }
 
 div.ant-card {
@@ -34,8 +31,8 @@ div.ant-card:first-child, div.ant-card:nth-child(2) {
 }
 
 .ant-card .ant-card-cover {
-    width: 179px;
-    height: 279px;
+    min-width: 179px;
+    min-height: 279px;
     margin: 0;
 }
 
@@ -45,9 +42,9 @@ div.ant-card:first-child, div.ant-card:nth-child(2) {
     border-radius: 0;
 }
 
-.ant-card .ant-card-body {
-    width: 228px;
-    margin: 10px 10px 49px 20px;
+div.ant-card div.ant-card-body {
+    width: 100%;
+    margin: 10px 0 49px 20px;
     padding: 0;
 }
 
@@ -55,20 +52,26 @@ div.ant-card:first-child, div.ant-card:nth-child(2) {
     font-size: 20px;
     line-height: 28px;
     font-family: inter UI;
-    margin: 0 0 0 0;
+    margin: 0;
+    width: 252px;
 }
 
 .ant-card .ant-card-body .ant-card-meta .ant-card-meta-description {
     width: 228px;
+    height: auto;
+}
+
+.description {
+    margin-top: 7px;
     height: 129px;
     font-size: 12px;
     line-height: 22px;
     font-family: inter UI;
-    margin-top: 63px;
     overflow: hidden; /* Скрыть переполнение */
     display: -webkit-box; /* Для многострочного текста */
     -webkit-box-orient: vertical; /* Вертикальная ориентация */
     -webkit-line-clamp: 6; /* Ограничение на 6 строк */
+    line-clamp: 6;
     text-overflow: ellipsis; /* Добавить троеточие */
 }
 
@@ -89,50 +92,65 @@ div.ant-card:first-child, div.ant-card:nth-child(2) {
     margin-left: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-div.ant-card::before {
-    display: none;
+.title {
+    width: 100%;
+    display: flex;
 }
 
-.ant-card .ant-card-body::before {
-    display: none;
+.title span:first-child {
+    overflow: hidden;
+    max-width: 80%;
+    text-overflow: ellipsis;
 }
 
-.ant-card .ant-card-body::after {
-    display: none;
+.title span:nth-child(2) {
+    padding-top: 2px;
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    margin: 0 9px 0 auto;
+    max-width: 112px;
+    border: 2px solid silver;
+    font-family: Inter;    
+    text-align: center;
+    vertical-align:bottom;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
 }
 
-.ant-card .ant-card-body .ant-card-meta::before {
-    display: none;
+div.ant-card ul.ant-rate {
+    margin-top: 20px;
 }
 
-.ant-card .ant-card-body .ant-card-meta::after {
-    display: none;
+div.ant-card ul.ant-rate li.ant-rate-star {
+    font-size: 16px;
 }
 
-.ant-card .ant-card-body .ant-card-meta .ant-card-meta-detail::after {
-    display: none;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
