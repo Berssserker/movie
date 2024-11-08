@@ -2,9 +2,9 @@ import { Pagination } from 'antd'
 
 import './Footer.css'
 
-const Footer = ({ updatePage }) => {
+const Footer = ({ setPage }) => {
   const switchingPage = (page) => {
-    updatePage(page)
+    setPage(page.toString())
   }
 
   return <Pagination align="center" total={50} onChange={switchingPage} />

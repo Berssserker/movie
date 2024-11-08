@@ -19,22 +19,15 @@ const App = () => {
   const [text, setText] = useState('')
   const [page, setPage] = useState('1')
   const [tab, setTab] = useState(true)
+  // const [updateRate, setUpdateRate] = useState(1)
   const { moviesData, errorData, loading } = useFetchMovies(text, page)
   const { isOnline } = useNetworStatus()
   const { guestId, errorId } = useFetchId()
-  const searchMovies = (value) => {
-    setText(value)
-  }
-  const updatePage = (value) => {
-    setPage(value.toString())
-  }
-  const changeTab = (value) => {
-    setTab(value)
-  }
+
   return (
     <div className="movie">
-      <Header changeTab={changeTab} text={text} page={page} searchMovies={searchMovies} />
-      {tab ? <Search guestId={guestId} text={text} searchMovies={searchMovies} moviesData={moviesData} /> : <Rated />}
+      <Header setTab={setTab} text={text} page={page} />
+      {tab ? <Search guestId={guestId} text={text} setText={setText} moviesData={moviesData} /> : <Rated />}
       {loading ? (
         <Loading />
       ) : errorId ? (
@@ -44,7 +37,7 @@ const App = () => {
       ) : errorData ? (
         <ErrorMessageData />
       ) : null}
-      <Footer updatePage={updatePage} />
+      <Footer setPage={setPage} />
     </div>
   )
 }

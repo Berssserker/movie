@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 
 import './Header.css'
 
-const Header = ({ changeTab }) => {
+const Header = ({ setTab }) => {
   const [active, setActive] = useState(true)
   const onChangeTab = (value) => {
-    changeTab(value)
+    setTab(value)
     setActive(value)
   }
   return (

@@ -2,9 +2,9 @@ import React from 'react'
 
 import './SearchBar.css'
 
-const SearchBar = ({ text, searchMovies }) => {
+const SearchBar = ({ text, setText }) => {
   const onSearch = (value) => {
-    searchMovies(value)
+    setText(value)
   }
   return (
     <input
