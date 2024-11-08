@@ -6,21 +6,21 @@ import FetchMovies from './FetchMovies/FetchMovies'
 const useFetchMovies = (text, page) => {
   const [moviesData, setMoviesData] = useState([])
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
+  const [errorData, setErrorData] = useState(false)
   useEffect(() => {
     setMoviesData([])
     if (text) {
       setLoading(true)
     }
     const debouncedFetchMovies = debounce(() => {
-      FetchMovies(setMoviesData, text, setError, setLoading, page)
+      FetchMovies(setMoviesData, text, setErrorData, setLoading, page)
     }, 1000)
     debouncedFetchMovies()
     return () => {
       debouncedFetchMovies.cancel()
     }
   }, [text, page])
-  return { moviesData, loading, error }
+  return { moviesData, loading, errorData }
 }
 
 export default useFetchMovies

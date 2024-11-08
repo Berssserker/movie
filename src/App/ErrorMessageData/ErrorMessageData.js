@@ -1,7 +1,7 @@
 import { Alert } from 'antd'
 
-const ErrorMessage = () => {
+const ErrorMessageData = () => {
   return <Alert message="Ooops!" description="No data was found." type="error" showIcon />
 }
 
-export default ErrorMessage
+export default ErrorMessageData

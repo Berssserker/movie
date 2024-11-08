@@ -9,15 +9,18 @@ import useFetchMovies from './useFetchMovies/useFetchMovies'
 import useNetworStatus from './useNetworkStatus/useNetworkStatus'
 import Footer from './Footer/Footer'
 import OfflineMessage from './OfflineMessage/OfflineMessage'
-import ErrorMessage from './ErrorMessage/ErrorMessage'
+import ErrorMessageData from './ErrorMessageData/ErrorMessageData'
+import ErrorMessageId from './ErrorMessageId/ErrorMessageId'
 import Loading from './Loading/Loading'
+import useFetchId from './useFetchId/useFetchId'
 
 const App = () => {
   const [text, setText] = useState('')
   const [page, setPage] = useState('1')
   const [tab, setTab] = useState(true)
-  const { moviesData, error, loading } = useFetchMovies(text, page)
+  const { moviesData, errorData, loading } = useFetchMovies(text, page)
   const { isOnline } = useNetworStatus()
+  const { id, errorId } = useFetchId()
   const searchMovies = (value) => {
     setText(value)
   }
@@ -29,9 +32,17 @@ const App = () => {
   }
   return (
     <div className="movie">
-      <Header changeTab={changeTab} text={text} page={page} searchMovies={searchMovies} />
+      <Header id={id} changeTab={changeTab} text={text} page={page} searchMovies={searchMovies} />
       {tab ? <Search text={text} searchMovies={searchMovies} moviesData={moviesData} /> : null}
-      {loading ? <Loading /> : !isOnline ? <OfflineMessage /> : error ? <ErrorMessage /> : null}
+      {loading ? (
+        <Loading />
+      ) : errorId ? (
+        <ErrorMessageId />
+      ) : !isOnline ? (
+        <OfflineMessage />
+      ) : errorData ? (
+        <ErrorMessageData />
+      ) : null}
       <Footer updatePage={updatePage} />
     </div>
   )
