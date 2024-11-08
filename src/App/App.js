@@ -14,20 +14,26 @@ import ErrorMessageId from './ErrorMessageId/ErrorMessageId'
 import Loading from './Loading/Loading'
 import useFetchId from './useFetchId/useFetchId'
 import Rated from './Rated/Rated'
+import useFetchRatedMovies from './useFetchRatedMovies/useFetchRatedMovies'
 
 const App = () => {
   const [text, setText] = useState('')
   const [page, setPage] = useState('1')
   const [tab, setTab] = useState(true)
-  // const [updateRate, setUpdateRate] = useState(1)
+  const [updateRate, setUpdateRate] = useState(1)
   const { moviesData, errorData, loading } = useFetchMovies(text, page)
   const { isOnline } = useNetworStatus()
   const { guestId, errorId } = useFetchId()
+  const { ratedMoviesData, ratedMoviesError } = useFetchRatedMovies(guestId, updateRate)
 
   return (
     <div className="movie">
       <Header setTab={setTab} text={text} page={page} />
-      {tab ? <Search guestId={guestId} text={text} setText={setText} moviesData={moviesData} /> : <Rated />}
+      {tab ? (
+        <Search setUpdateRate={setUpdateRate} guestId={guestId} text={text} setText={setText} moviesData={moviesData} />
+      ) : (
+        <Rated ratedMoviesData={ratedMoviesData} ratedMoviesError={ratedMoviesError} />
+      )}
       {loading ? (
         <Loading />
       ) : errorId ? (
