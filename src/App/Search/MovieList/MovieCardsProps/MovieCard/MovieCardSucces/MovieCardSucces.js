@@ -2,13 +2,16 @@ import React from 'react'
 import { Card, Rate } from 'antd'
 import { format } from 'date-fns'
 
-const MovieCardSucces = ({ vote_average, poster_path, overview, title, release_date }) => {
+import RateMovie from './RateMovie/RateMovie'
+import DeleteRateMovie from './DeleteRateMovie/DeleteRateMovie'
+
+const MovieCardSucces = ({ movieId, guestId, vote_average, poster_path, overview, title, release_date }) => {
   const { Meta } = Card
   const url = 'https://image.tmdb.org/t/p/original'
   const plug = 'https://i1.sndcdn.com/artworks-Bg54D6aCmjdNZLMh-9lWVgg-t500x500.jpg'
   const fullImageUrl = poster_path ? url + poster_path : plug
-  const Rating = (value) => {
-    console.log(value)
+  const Rating = (rating) => {
+    rating ? RateMovie(guestId, movieId, rating) : DeleteRateMovie(guestId, movieId)
   }
   return (
     <Card cover={<img alt="Poster" src={fullImageUrl} />}>

@@ -13,6 +13,7 @@ import ErrorMessageData from './ErrorMessageData/ErrorMessageData'
 import ErrorMessageId from './ErrorMessageId/ErrorMessageId'
 import Loading from './Loading/Loading'
 import useFetchId from './useFetchId/useFetchId'
+import Rated from './Rated/Rated'
 
 const App = () => {
   const [text, setText] = useState('')
@@ -33,7 +34,7 @@ const App = () => {
   return (
     <div className="movie">
       <Header changeTab={changeTab} text={text} page={page} searchMovies={searchMovies} />
-      {tab ? <Search guestId={guestId} text={text} searchMovies={searchMovies} moviesData={moviesData} /> : null}
+      {tab ? <Search guestId={guestId} text={text} searchMovies={searchMovies} moviesData={moviesData} /> : Rated}
       {loading ? (
         <Loading />
       ) : errorId ? (
