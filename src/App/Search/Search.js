@@ -5,11 +5,11 @@ import './Search.css'
 import MovieList from './MovieList/MovieList'
 import SearchBar from './SearchBar/SearchBar'
 
-const Search = ({ id, text, searchMovies, moviesData }) => {
+const Search = ({ guestId, text, searchMovies, moviesData }) => {
   return (
     <div className="search">
       <SearchBar text={text} searchMovies={searchMovies} />
-      <MovieList id={id} moviesData={moviesData} />
+      <MovieList guestId={guestId} moviesData={moviesData} />
     </div>
   )
 }

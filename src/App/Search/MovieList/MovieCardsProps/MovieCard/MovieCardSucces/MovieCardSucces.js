@@ -7,6 +7,9 @@ const MovieCardSucces = ({ vote_average, poster_path, overview, title, release_d
   const url = 'https://image.tmdb.org/t/p/original'
   const plug = 'https://i1.sndcdn.com/artworks-Bg54D6aCmjdNZLMh-9lWVgg-t500x500.jpg'
   const fullImageUrl = poster_path ? url + poster_path : plug
+  const Rating = (value) => {
+    console.log(value)
+  }
   return (
     <Card cover={<img alt="Poster" src={fullImageUrl} />}>
       <Meta
@@ -29,7 +32,7 @@ const MovieCardSucces = ({ vote_average, poster_path, overview, title, release_d
           </div>
         }
       />
-      <Rate count={10} allowHalf />
+      <Rate count={10} allowHalf onChange={Rating} />
     </Card>
   )
 }
