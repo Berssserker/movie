@@ -34,7 +34,7 @@ const App = () => {
   return (
     <div className="movie">
       <Header changeTab={changeTab} text={text} page={page} searchMovies={searchMovies} />
-      {tab ? <Search guestId={guestId} text={text} searchMovies={searchMovies} moviesData={moviesData} /> : Rated}
+      {tab ? <Search guestId={guestId} text={text} searchMovies={searchMovies} moviesData={moviesData} /> : <Rated />}
       {loading ? (
         <Loading />
       ) : errorId ? (
