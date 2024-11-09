@@ -5,6 +5,7 @@ const FetchMovies = async (setMoviesData, text, setErrorData, setLoading, page) 
   try {
     const data = await GetMovie(text, page)
     setMoviesData(data.results || [])
+    console.log(data.results)
     if (data.results !== null && data.results.length === 0 && text) {
       setErrorData(true)
     }

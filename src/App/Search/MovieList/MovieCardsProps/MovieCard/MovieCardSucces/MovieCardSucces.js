@@ -5,13 +5,23 @@ import { format } from 'date-fns'
 import RateMovie from './RateMovie/RateMovie'
 import DeleteRateMovie from './DeleteRateMovie/DeleteRateMovie'
 
-const MovieCardSucces = ({ movieId, guestId, vote_average, poster_path, overview, title, release_date }) => {
+const MovieCardSucces = ({
+  movieId,
+  guestId,
+  vote_average,
+  poster_path,
+  overview,
+  title,
+  release_date,
+  updateRatedMovies,
+}) => {
   const { Meta } = Card
   const url = 'https://image.tmdb.org/t/p/original'
   const plug = 'https://i1.sndcdn.com/artworks-Bg54D6aCmjdNZLMh-9lWVgg-t500x500.jpg'
   const fullImageUrl = poster_path ? url + poster_path : plug
-  const Rating = (rating) => {
-    rating ? RateMovie(guestId, movieId, rating) : DeleteRateMovie(guestId, movieId)
+  const ChangeRating = (value) => {
+    value ? RateMovie(guestId, movieId, value) : DeleteRateMovie(guestId, movieId)
+    updateRatedMovies()
   }
   return (
     <Card cover={<img alt="Poster" src={fullImageUrl} />}>
@@ -35,7 +45,7 @@ const MovieCardSucces = ({ movieId, guestId, vote_average, poster_path, overview
           </div>
         }
       />
-      <Rate count={10} allowHalf onChange={Rating} />
+      <Rate count={10} allowHalf onChange={(e) => ChangeRating(e)} />
     </Card>
   )
 }

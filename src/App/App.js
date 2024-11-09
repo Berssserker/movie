@@ -24,7 +24,7 @@ const App = () => {
   const { moviesData, errorData, loading } = useFetchMovies(text, page)
   const { isOnline } = useNetworStatus()
   const { guestId, errorId } = useFetchId()
-  const { ratedMoviesData, ratedMoviesError } = useFetchRatedMovies(guestId, updateRate)
+  const { ratedMoviesData, ratedMoviesError } = useFetchRatedMovies(guestId, updateRate, tab)
 
   const updateRatedMovies = () => {
     setUpdateRate(!updateRate)
@@ -34,7 +34,14 @@ const App = () => {
     <div className="movie">
       <Header setTab={setTab} text={text} page={page} />
       {tab ? (
-        <Search setUpdateRate={setUpdateRate} guestId={guestId} text={text} setText={setText} moviesData={moviesData} />
+        <Search
+          updateRatedMovies={updateRatedMovies}
+          setUpdateRate={setUpdateRate}
+          guestId={guestId}
+          text={text}
+          setText={setText}
+          moviesData={moviesData}
+        />
       ) : (
         <Rated ratedMoviesData={ratedMoviesData} ratedMoviesError={ratedMoviesError} />
       )}

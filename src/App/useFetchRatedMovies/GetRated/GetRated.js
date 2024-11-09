@@ -9,6 +9,7 @@ const GetRated = async (guestId) => {
   }
 
   const body = await response.json()
+  console.log(body)
   return body
 }
 

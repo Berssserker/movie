@@ -5,7 +5,16 @@ import MovieCardError from './MovieCardError/MovieCardError'
 
 import './MovieCard.css'
 
-const MovieCard = ({ movieId, guestId, vote_average, poster_path, overview, title, release_date }) => {
+const MovieCard = ({
+  movieId,
+  guestId,
+  vote_average,
+  poster_path,
+  overview,
+  title,
+  release_date,
+  updateRatedMovies,
+}) => {
   const [error, setError] = useState(false)
   useEffect(() => {
     if (!vote_average && !poster_path && !overview && !title && !release_date) {
@@ -23,6 +32,7 @@ const MovieCard = ({ movieId, guestId, vote_average, poster_path, overview, titl
       overview={overview}
       title={title}
       release_date={release_date}
+      updateRatedMovies={updateRatedMovies}
     />
   )
 }
