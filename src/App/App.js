@@ -20,11 +20,15 @@ const App = () => {
   const [text, setText] = useState('')
   const [page, setPage] = useState('1')
   const [tab, setTab] = useState(true)
-  const [updateRate, setUpdateRate] = useState(1)
+  const [updateRate, setUpdateRate] = useState(true)
   const { moviesData, errorData, loading } = useFetchMovies(text, page)
   const { isOnline } = useNetworStatus()
   const { guestId, errorId } = useFetchId()
   const { ratedMoviesData, ratedMoviesError } = useFetchRatedMovies(guestId, updateRate)
+
+  const updateRatedMovies = () => {
+    setUpdateRate(!updateRate)
+  }
 
   return (
     <div className="movie">
