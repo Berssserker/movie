@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react'
 
 import GetRated from './GetRated/GetRated'
 
-const useFetchRatedMovies = (guestId, updateRate, tab) => {
+const useFetchRatedMovies = (guestId, updateRate) => {
   const [ratedMoviesData, setRatedMoviesData] = useState([])
   const [ratedMoviesError, setRatedMoviesError] = useState(false)
-  console.log(tab)
   useEffect(() => {
     const FetchRatedMovies = async () => {
-      if (!tab) {
+      if (guestId) {
         try {
           const body = await GetRated(guestId)
           setRatedMoviesData(body.results || [])
@@ -24,7 +23,7 @@ const useFetchRatedMovies = (guestId, updateRate, tab) => {
       }
     }
     FetchRatedMovies()
-  }, [updateRate, guestId, tab])
+  }, [guestId, updateRate])
   return { ratedMoviesData, ratedMoviesError }
 }
 

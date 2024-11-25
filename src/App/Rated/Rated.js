@@ -1,7 +1,9 @@
 import React from 'react'
 
-const Rated = () => {
-  return <div></div>
+import MovieList from './MovieList/MovieList'
+
+const Rated = ({ ratedMoviesData }) => {
+  return <MovieList ratedMoviesData={ratedMoviesData} />
 }
 
 export default Rated
