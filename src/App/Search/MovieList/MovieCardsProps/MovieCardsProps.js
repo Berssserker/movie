@@ -1,9 +1,11 @@
 import MovieCard from './MovieCard/MovieCard'
 
-const MovieCardsProps = (property, property2, guestId, useUpdate) =>
-  property?.map((item) => {
-    const { id, ...itemProps } = property2?.find((item2) => item2.id === item.id) || item
-    return <MovieCard guestId={guestId} movieId={id} key={id} {...itemProps} useUpdate={useUpdate} />
+const MovieCardsProps = (moviesData, ratedMoviesData, guestId, setRating, setMovieId) =>
+  moviesData?.map((item) => {
+    const { id, ...itemProps } = ratedMoviesData?.find((item2) => item2.id === item.id) || item
+    return (
+      <MovieCard guestId={guestId} movieId={id} key={id} {...itemProps} setRating={setRating} setMovieId={setMovieId} />
+    )
   })
 
 export default MovieCardsProps

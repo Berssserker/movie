@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Card, Rate } from 'antd'
 import { format } from 'date-fns'
 
-import RateAndFetchMovies from './RateMovie/RateMovie'
 import DeleteRateMovie from './DeleteRateMovie/DeleteRateMovie'
 
 const MovieCardSucces = ({
@@ -14,17 +13,18 @@ const MovieCardSucces = ({
   title,
   release_date,
   rating,
-  useUpdate,
+  setRating,
+  setMovieId,
 }) => {
-  const [ratings, setRating] = useState(rating ? rating : 0)
+  const [ratingData, setRatingData] = useState(rating || 0)
   const { Meta } = Card
   const url = 'https://image.tmdb.org/t/p/original'
   const plug = 'https://i1.sndcdn.com/artworks-Bg54D6aCmjdNZLMh-9lWVgg-t500x500.jpg'
   const fullImageUrl = poster_path ? url + poster_path : plug
   const ChangeRating = (e) => {
-    e ? RateAndFetchMovies(guestId, movieId, e) : DeleteRateMovie(guestId, movieId)
-    setRating(e)
-    useUpdate()
+    e ? setRating(e) : DeleteRateMovie(guestId, movieId)
+    setMovieId(movieId)
+    setRatingData(e)
   }
   return (
     <Card cover={<img alt="Poster" src={fullImageUrl} />}>
@@ -48,7 +48,7 @@ const MovieCardSucces = ({
           </div>
         }
       />
-      <Rate value={ratings} count={10} allowHalf onChange={(e) => ChangeRating(e)} />
+      <Rate value={ratingData} count={10} allowHalf onChange={(e) => ChangeRating(e)} />
     </Card>
   )
 }

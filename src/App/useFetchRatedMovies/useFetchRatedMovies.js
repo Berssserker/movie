@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react'
 
-import GetRated from './GetRated/GetRated'
+// import GetRated from './GetRated/GetRated'
+import RateAndFetchMovies from './RateMovie/RateMovie'
 
-const useFetchRatedMovies = (guestId, updateRate) => {
+const useFetchRatedMovies = (guestId, movieId, rating) => {
   const [ratedMoviesData, setRatedMoviesData] = useState([])
   const [ratedMoviesError, setRatedMoviesError] = useState(false)
   useEffect(() => {
     const FetchRatedMovies = async () => {
-      if (guestId) {
+      if (guestId && movieId && rating) {
         try {
-          const body = await GetRated(guestId)
+          const body = await RateAndFetchMovies(guestId, movieId, rating)
           setRatedMoviesData(body.results || [])
           if (!body.results) {
             setRatedMoviesError(true)
@@ -17,13 +18,12 @@ const useFetchRatedMovies = (guestId, updateRate) => {
             setRatedMoviesError(false)
           }
         } catch (error) {
-          console.log(error)
           setRatedMoviesData([])
         }
       }
     }
     FetchRatedMovies()
-  }, [guestId, updateRate])
+  }, [movieId])
   return { ratedMoviesData, ratedMoviesError }
 }
 

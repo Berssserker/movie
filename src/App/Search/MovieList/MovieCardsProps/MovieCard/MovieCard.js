@@ -14,7 +14,8 @@ const MovieCard = ({
   title,
   release_date,
   rating,
-  useUpdate,
+  setRating,
+  setMovieId,
 }) => {
   const [error, setError] = useState(false)
   useEffect(() => {
@@ -26,7 +27,6 @@ const MovieCard = ({
     <MovieCardError />
   ) : (
     <MovieCardSucces
-      useUpdate={useUpdate}
       movieId={movieId}
       guestId={guestId}
       vote_average={vote_average}
@@ -35,6 +35,8 @@ const MovieCard = ({
       title={title}
       release_date={release_date}
       rating={rating}
+      setRating={setRating}
+      setMovieId={setMovieId}
     />
   )
 }
