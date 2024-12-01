@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, Rate } from 'antd'
 import { format } from 'date-fns'
-
-import DeleteRateMovie from './DeleteRateMovie/DeleteRateMovie'
+import debounce from 'lodash.debounce'
 
 const MovieCardSucces = ({
   movieId,
-  guestId,
   vote_average,
   poster_path,
   overview,
@@ -21,11 +19,29 @@ const MovieCardSucces = ({
   const url = 'https://image.tmdb.org/t/p/original'
   const plug = 'https://i1.sndcdn.com/artworks-Bg54D6aCmjdNZLMh-9lWVgg-t500x500.jpg'
   const fullImageUrl = poster_path ? url + poster_path : plug
+  // const ChangeRating = (e) => {
+  //   setRating(e)
+  //   setMovieId(movieId)
+  //   console.log(movieId)
+  //   setRatingData(e)
+  // }
+  const debouncedChangeRating = debounce((newRating) => {
+    setRating(newRating)
+    setRatingData(newRating)
+    setMovieId(movieId) // Устанавливаем movieId
+    console.log(movieId) // Логируем movieId
+  }, 300) // Задержка в 500 мс
+
   const ChangeRating = (e) => {
-    e ? setRating(e) : DeleteRateMovie(guestId, movieId)
-    setMovieId(movieId)
-    setRatingData(e)
+    debouncedChangeRating(e) // Вызываем дебаунс-функцию
   }
+
+  // Очистка при размонтировании компонента
+  useEffect(() => {
+    return () => {
+      debouncedChangeRating.cancel() // Отменяем выполнение дебаунс-функции
+    }
+  }, [])
   return (
     <Card cover={<img alt="Poster" src={fullImageUrl} />}>
       <Meta

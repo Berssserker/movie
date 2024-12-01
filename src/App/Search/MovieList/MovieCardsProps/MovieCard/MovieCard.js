@@ -7,7 +7,6 @@ import './MovieCard.css'
 
 const MovieCard = ({
   movieId,
-  guestId,
   vote_average,
   poster_path,
   overview,
@@ -28,7 +27,6 @@ const MovieCard = ({
   ) : (
     <MovieCardSucces
       movieId={movieId}
-      guestId={guestId}
       vote_average={vote_average}
       poster_path={poster_path}
       overview={overview}

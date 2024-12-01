@@ -1,29 +1,36 @@
 import { useState, useEffect } from 'react'
+// import debounce from 'lodash.debounce'
 
-// import GetRated from './GetRated/GetRated'
-import RateAndFetchMovies from './RateMovie/RateMovie'
+import FetchRatedMovies from './FetchRatedMovies/FetchRatedMovies'
+import DeleteRateMovie from './DeleteRateMovie/DeleteRateMovie'
 
 const useFetchRatedMovies = (guestId, movieId, rating) => {
   const [ratedMoviesData, setRatedMoviesData] = useState([])
   const [ratedMoviesError, setRatedMoviesError] = useState(false)
   useEffect(() => {
-    const FetchRatedMovies = async () => {
-      if (guestId && movieId && rating) {
+    const Fetch = async () => {
+      if (guestId) {
         try {
-          const body = await RateAndFetchMovies(guestId, movieId, rating)
-          setRatedMoviesData(body.results || [])
-          if (!body.results) {
-            setRatedMoviesError(true)
+          if (ratedMoviesData.length <= 1 && rating === 0) {
+            setRatedMoviesData([])
+            DeleteRateMovie(guestId, movieId)
           } else {
-            setRatedMoviesError(false)
+            const body = await FetchRatedMovies(guestId, movieId, rating)
+            setRatedMoviesData(body.results || [])
+            console.log(ratedMoviesData)
+            if (!body.results) {
+              setRatedMoviesError(true)
+            } else {
+              setRatedMoviesError(false)
+            }
           }
         } catch (error) {
           setRatedMoviesData([])
         }
       }
     }
-    FetchRatedMovies()
-  }, [movieId])
+    Fetch()
+  }, [movieId, rating])
   return { ratedMoviesData, ratedMoviesError }
 }
 
