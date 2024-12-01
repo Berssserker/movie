@@ -19,27 +19,21 @@ const MovieCardSucces = ({
   const url = 'https://image.tmdb.org/t/p/original'
   const plug = 'https://i1.sndcdn.com/artworks-Bg54D6aCmjdNZLMh-9lWVgg-t500x500.jpg'
   const fullImageUrl = poster_path ? url + poster_path : plug
-  // const ChangeRating = (e) => {
-  //   setRating(e)
-  //   setMovieId(movieId)
-  //   console.log(movieId)
-  //   setRatingData(e)
-  // }
+
   const debouncedChangeRating = debounce((newRating) => {
     setRating(newRating)
     setRatingData(newRating)
-    setMovieId(movieId) // Устанавливаем movieId
-    console.log(movieId) // Логируем movieId
-  }, 300) // Задержка в 500 мс
+    setMovieId(movieId)
+    console.log(movieId)
+  }, 300)
 
   const ChangeRating = (e) => {
-    debouncedChangeRating(e) // Вызываем дебаунс-функцию
+    debouncedChangeRating(e)
   }
 
-  // Очистка при размонтировании компонента
   useEffect(() => {
     return () => {
-      debouncedChangeRating.cancel() // Отменяем выполнение дебаунс-функции
+      debouncedChangeRating.cancel()
     }
   }, [])
   return (
@@ -48,7 +42,23 @@ const MovieCardSucces = ({
         title={
           <div className="title">
             <span>{title}</span>
-            <span>{Math.ceil(vote_average * 10) / 10}</span>
+            <span
+              style={
+                ratingData === 0
+                  ? { borderColor: 'silver' }
+                  : ratingData <= 3
+                    ? { borderColor: '#E90000' }
+                    : ratingData <= 5
+                      ? { borderColor: '#E97E00' }
+                      : ratingData <= 7
+                        ? { borderColor: '#E9D100' }
+                        : ratingData > 7
+                          ? { borderColor: '#66E900' }
+                          : null
+              }
+            >
+              {Math.ceil(vote_average * 10) / 10}
+            </span>
           </div>
         }
         description={
