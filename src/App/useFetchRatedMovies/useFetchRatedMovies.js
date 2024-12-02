@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-// import debounce from 'lodash.debounce'
+import debounce from 'lodash.debounce'
 
 import FetchRatedMovies from './FetchRatedMovies/FetchRatedMovies'
 import DeleteRateMovie from './DeleteRateMovie/DeleteRateMovie'
@@ -8,16 +8,17 @@ const useFetchRatedMovies = (guestId, movieId, rating) => {
   const [ratedMoviesData, setRatedMoviesData] = useState([])
   const [ratedMoviesError, setRatedMoviesError] = useState(false)
   useEffect(() => {
-    const Fetch = async () => {
+    const debouncedFetch = debounce(async () => {
       if (guestId) {
         try {
-          if (ratedMoviesData.length <= 1 && rating === 0) {
+          if (ratedMoviesData.length === 1 && rating === 0) {
             setRatedMoviesData([])
             DeleteRateMovie(guestId, movieId)
+          } else if (ratedMoviesData.length === 0 && rating === 0) {
+            return
           } else {
             const body = await FetchRatedMovies(guestId, movieId, rating)
             setRatedMoviesData(body.results || [])
-            console.log(ratedMoviesData)
             if (!body.results) {
               setRatedMoviesError(true)
             } else {
@@ -28,8 +29,8 @@ const useFetchRatedMovies = (guestId, movieId, rating) => {
           setRatedMoviesData([])
         }
       }
-    }
-    Fetch()
+    }, 1000)
+    debouncedFetch()
   }, [movieId, rating])
   return { ratedMoviesData, ratedMoviesError }
 }

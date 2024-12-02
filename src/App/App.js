@@ -25,24 +25,30 @@ const App = () => {
   const { guestId, errorId } = useFetchId()
   const [rating, setRating] = useState(0)
   const [movieId, setMovieId] = useState(0)
-  const { ratedMoviesData, ratedMoviesError } = useFetchRatedMovies(guestId, movieId, rating)
+  // const { ratedMoviesData, ratedMoviesError } = useFetchRatedMovies(guestId, movieId, rating)
 
   return (
     <div className="movie">
-      <Header setTab={setTab} text={text} page={page} />
+      <Header setTab={setTab} />
       {tab ? (
         <Search
-          guestId={guestId}
           text={text}
           setText={setText}
           moviesData={moviesData}
-          ratedMoviesData={ratedMoviesData}
+          // ratedMoviesData={ratedMoviesData}
           setRating={setRating}
           setMovieId={setMovieId}
         />
-      ) : (
-        <Rated ratedMoviesData={ratedMoviesData} ratedMoviesError={ratedMoviesError} />
-      )}
+      ) : null}
+
+      {/* //  (
+      //   <Rated
+      //     setRating={setRating}
+      //     setMovieId={setMovieId}
+      //     ratedMoviesData={ratedMoviesData}
+      //     ratedMoviesError={ratedMoviesError}
+      //   />
+      // ) */}
       {loading ? (
         <Loading />
       ) : errorId ? (
@@ -52,7 +58,7 @@ const App = () => {
       ) : errorData ? (
         <ErrorMessageData />
       ) : null}
-      <Footer setPage={setPage} />
+      {tab ? <Footer page={page} setPage={setPage} /> : null}
     </div>
   )
 }

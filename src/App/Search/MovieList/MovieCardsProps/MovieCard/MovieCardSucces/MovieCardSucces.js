@@ -20,14 +20,21 @@ const MovieCardSucces = ({
   const plug = 'https://i1.sndcdn.com/artworks-Bg54D6aCmjdNZLMh-9lWVgg-t500x500.jpg'
   const fullImageUrl = poster_path ? url + poster_path : plug
 
-  const debouncedChangeRating = debounce((newRating) => {
-    setRating(newRating)
-    setRatingData(newRating)
-    setMovieId(movieId)
-    console.log(movieId)
+  const debouncedChangeRating = debounce(async (newRating) => {
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+    if (newRating) {
+      setRatingData(newRating)
+      setRating(newRating)
+      setMovieId(movieId)
+    } else {
+      setRatingData(newRating)
+      await delay(5000)
+      setRating(newRating)
+      setMovieId(movieId)
+    }
   }, 300)
 
-  const ChangeRating = (e) => {
+  const ChangeRating = async (e) => {
     debouncedChangeRating(e)
   }
 
