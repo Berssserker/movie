@@ -2,12 +2,13 @@ import React from 'react'
 
 import MovieList from './MovieList/MovieList'
 
-const Rated = ({ ratedMoviesData, setRating, setMovieId, ratedMoviesError }) => {
+const Rated = ({ setMovieId, setRate, guestId, ratedMoviesData, ratedMoviesError }) => {
   return (
     <MovieList
-      ratedMoviesData={ratedMoviesData}
-      setRating={setRating}
       setMovieId={setMovieId}
+      setRate={setRate}
+      guestId={guestId}
+      ratedMoviesData={ratedMoviesData}
       ratedMoviesError={ratedMoviesError}
     />
   )

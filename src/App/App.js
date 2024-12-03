@@ -15,48 +15,49 @@ import Loading from './Loading/Loading'
 import useFetchId from './useFetchId/useFetchId'
 import Rated from './Rated/Rated'
 import useFetchRatedMovies from './useFetchRatedMovies/useFetchRatedMovies'
+import ErrorMessageRate from './ErrorMessageRate/ErrorMessageRate'
 
 const App = () => {
   const [text, setText] = useState('')
   const [page, setPage] = useState('1')
   const [tab, setTab] = useState(true)
-  const { moviesData, errorData, loading } = useFetchMovies(text, page)
+  const [rate, setRate] = useState(0)
+  const [movieId, setMovieId] = useState(0)
+  const { moviesData, errorData, loading, setLoading } = useFetchMovies(text, page, tab)
   const { isOnline } = useNetworStatus()
   const { guestId, errorId } = useFetchId()
-  const [rating, setRating] = useState(0)
-  const [movieId, setMovieId] = useState(0)
-  // const { ratedMoviesData, ratedMoviesError } = useFetchRatedMovies(guestId, movieId, rating)
+  const { ratedMoviesData, ratedMoviesError } = useFetchRatedMovies(guestId, tab, rate, movieId, setLoading)
 
   return (
     <div className="movie">
       <Header setTab={setTab} />
       {tab ? (
         <Search
+          guestId={guestId}
           text={text}
           setText={setText}
           moviesData={moviesData}
-          // ratedMoviesData={ratedMoviesData}
-          setRating={setRating}
+          ratedMoviesData={ratedMoviesData}
+        />
+      ) : !loading && !tab ? (
+        <Rated
+          guestId={guestId}
+          ratedMoviesData={ratedMoviesData}
+          ratedMoviesError={ratedMoviesError}
+          setRate={setRate}
           setMovieId={setMovieId}
         />
       ) : null}
-
-      {/* //  (
-      //   <Rated
-      //     setRating={setRating}
-      //     setMovieId={setMovieId}
-      //     ratedMoviesData={ratedMoviesData}
-      //     ratedMoviesError={ratedMoviesError}
-      //   />
-      // ) */}
       {loading ? (
         <Loading />
       ) : errorId ? (
         <ErrorMessageId />
       ) : !isOnline ? (
         <OfflineMessage />
-      ) : errorData ? (
+      ) : errorData && tab ? (
         <ErrorMessageData />
+      ) : ratedMoviesError && !tab ? (
+        <ErrorMessageRate />
       ) : null}
       {tab ? <Footer page={page} setPage={setPage} /> : null}
     </div>

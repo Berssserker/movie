@@ -4,7 +4,7 @@ body {
 
 .movie {
     flex-direction: column;
-    align-items: center;    
+    align-items: center;   
     display: flex;
     margin: auto;
     width: 1010px;
@@ -12,6 +12,6 @@ body {
     background-color: #FFFFFF;
 }
 
-.movie-list div.ant-alert { 
+.movie.movie-list div.ant-alert.ant-alert-error.ant-alert-with-description { 
     margin: auto;
 }

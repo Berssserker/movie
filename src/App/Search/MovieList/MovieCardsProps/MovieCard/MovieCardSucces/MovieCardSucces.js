@@ -1,48 +1,34 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Card, Rate } from 'antd'
 import { format } from 'date-fns'
-import debounce from 'lodash.debounce'
+// import debounce from 'lodash.debounce'
 
-const MovieCardSucces = ({
-  movieId,
-  vote_average,
-  poster_path,
-  overview,
-  title,
-  release_date,
-  rating,
-  setRating,
-  setMovieId,
-}) => {
+import RateOrDeleteRating from './RateOrDeleteRating/RateOrDeleteRating'
+
+const MovieCardSucces = ({ movieId, vote_average, poster_path, overview, title, release_date, rating, guestId }) => {
   const [ratingData, setRatingData] = useState(rating || 0)
   const { Meta } = Card
   const url = 'https://image.tmdb.org/t/p/original'
   const plug = 'https://i1.sndcdn.com/artworks-Bg54D6aCmjdNZLMh-9lWVgg-t500x500.jpg'
   const fullImageUrl = poster_path ? url + poster_path : plug
 
-  const debouncedChangeRating = debounce(async (newRating) => {
-    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
-    if (newRating) {
-      setRatingData(newRating)
-      setRating(newRating)
-      setMovieId(movieId)
-    } else {
-      setRatingData(newRating)
-      await delay(5000)
-      setRating(newRating)
-      setMovieId(movieId)
-    }
-  }, 300)
+  // const debouncedChangeRating = debounce(async (newRating) => {
+  //   setRatingData(newRating)
+  //   RateOrDeleteRating(guestId, movieId, newRating)
+  //   console.log(newRating)
+  // }, 300)
 
-  const ChangeRating = async (e) => {
-    debouncedChangeRating(e)
+  const ChangeRating = (e) => {
+    setRatingData(e)
+    RateOrDeleteRating(guestId, movieId, e)
+    // debouncedChangeRating(e)
   }
 
-  useEffect(() => {
-    return () => {
-      debouncedChangeRating.cancel()
-    }
-  }, [])
+  // useEffect(() => {
+  //   return () => {
+  //     debouncedChangeRating.cancel()
+  //   }
+  // }, [])
   return (
     <Card cover={<img alt="Poster" src={fullImageUrl} />}>
       <Meta

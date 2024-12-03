@@ -15,6 +15,7 @@ const MovieCard = ({
   rating,
   setRating,
   setMovieId,
+  guestId,
 }) => {
   const [error, setError] = useState(false)
   useEffect(() => {
@@ -35,6 +36,7 @@ const MovieCard = ({
       rating={rating}
       setRating={setRating}
       setMovieId={setMovieId}
+      guestId={guestId}
     />
   )
 }

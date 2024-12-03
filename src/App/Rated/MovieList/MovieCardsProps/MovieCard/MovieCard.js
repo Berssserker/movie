@@ -6,6 +6,8 @@ import MovieCardError from './MovieCardError/MovieCardError'
 import './MovieCard.css'
 
 const MovieCard = ({
+  setRate,
+  setMovieId,
   movieId,
   vote_average,
   poster_path,
@@ -13,8 +15,7 @@ const MovieCard = ({
   title,
   release_date,
   rating,
-  setRating,
-  setMovieId,
+  guestId,
 }) => {
   const [error, setError] = useState(false)
   useEffect(() => {
@@ -33,7 +34,8 @@ const MovieCard = ({
       title={title}
       release_date={release_date}
       rating={rating}
-      setRating={setRating}
+      guestId={guestId}
+      setRate={setRate}
       setMovieId={setMovieId}
     />
   )

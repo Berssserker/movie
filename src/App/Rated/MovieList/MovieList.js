@@ -4,8 +4,8 @@ import './MovieList.css'
 
 import MovieCardsProps from './MovieCardsProps/MovieCardsProps'
 
-const MovieList = ({ ratedMoviesData, setRating, setMovieId }) => {
-  return <section className="movie-list">{MovieCardsProps(ratedMoviesData, setRating, setMovieId)}</section>
+const MovieList = ({ guestId, ratedMoviesData, setRate, setMovieId }) => {
+  return <section className="movie-list">{MovieCardsProps(ratedMoviesData, guestId, setRate, setMovieId)}</section>
 }
 
 export default MovieList

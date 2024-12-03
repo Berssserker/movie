@@ -3,7 +3,7 @@ import debounce from 'lodash.debounce'
 
 import FetchMovies from './FetchMovies/FetchMovies'
 
-const useFetchMovies = (text, page) => {
+const useFetchMovies = (text, page, tab) => {
   const [moviesData, setMoviesData] = useState([])
   const [loading, setLoading] = useState(false)
   const [errorData, setErrorData] = useState(false)
@@ -19,8 +19,8 @@ const useFetchMovies = (text, page) => {
     return () => {
       debouncedFetchMovies.cancel()
     }
-  }, [text, page])
-  return { moviesData, loading, errorData }
+  }, [text, page, tab])
+  return { moviesData, loading, errorData, setLoading }
 }
 
 export default useFetchMovies
