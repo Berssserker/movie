@@ -1,10 +1,10 @@
 import GetMovie from './GetMovie/GetMovie'
 
-const FetchMovies = async (setMoviesData, text, setError, setLoading, page) => {
+const FetchMovies = async (setMoviesData, text, setError, page) => {
   setError(false)
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
   try {
-    await delay(2000)
+    await delay(4000)
     const data = await GetMovie(text, page)
     setMoviesData(data.results || [])
     console.log(data.results)
@@ -13,8 +13,6 @@ const FetchMovies = async (setMoviesData, text, setError, setLoading, page) => {
     }
   } catch (error) {
     setMoviesData([])
-  } finally {
-    setLoading(false)
   }
 }
 

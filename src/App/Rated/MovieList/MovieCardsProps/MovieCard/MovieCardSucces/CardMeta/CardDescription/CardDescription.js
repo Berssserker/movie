@@ -1,15 +1,16 @@
 import React from 'react'
 import { format } from 'date-fns'
 
-const CardDescription = ({ overview, release_date }) => {
+import MovieGenres from './MovieGenres/MovieGenres'
+
+const CardDescription = ({ genre_ids, overview, release_date }) => {
   return (
     <div className="description">
       <div className="date">
         {release_date !== '' ? format(new Date(release_date), 'MMMM d, yyyy') : 'Date not found :<'}
       </div>
       <div className="genre">
-        <span>Action</span>
-        <span>Drama</span>
+        {genre_ids.length !== 0 ? <MovieGenres genre_ids={genre_ids} /> : <span>Genre not found</span>}
       </div>
       <div className="description-text">{overview !== '' ? overview : 'Description not found :<'}</div>
     </div>

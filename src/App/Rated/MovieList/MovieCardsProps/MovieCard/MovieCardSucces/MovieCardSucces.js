@@ -5,6 +5,7 @@ import CardMeta from './CardMeta/CardMeta'
 import RateOrDeleteRating from './RateOrDeleteRating/RateOrDeleteRating'
 
 const MovieCardSucces = ({
+  genre_ids,
   setMovieId,
   setRate,
   movieId,
@@ -32,6 +33,7 @@ const MovieCardSucces = ({
   return (
     <Card cover={<img alt="Poster" src={fullImageUrl} />}>
       <CardMeta
+        genre_ids={genre_ids}
         ratingData={ratingData}
         vote_average={vote_average}
         overview={overview}

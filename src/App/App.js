@@ -18,7 +18,7 @@ import useFetchRatedMovies from './useFetchRatedMovies/useFetchRatedMovies'
 import ErrorMessageRate from './ErrorMessageRate/ErrorMessageRate'
 import useFetchGenres from './useFetchGenres/useFetchGenres'
 
-const GenresContext = createContext()
+export const GenresContext = createContext()
 
 const App = () => {
   const [rate, setRate] = useState(0)

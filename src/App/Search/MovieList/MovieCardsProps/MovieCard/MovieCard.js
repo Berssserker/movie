@@ -6,6 +6,7 @@ import MovieCardError from './MovieCardError/MovieCardError'
 import './MovieCard.css'
 
 const MovieCard = ({
+  genre_ids,
   movieId,
   vote_average,
   poster_path,
@@ -27,6 +28,7 @@ const MovieCard = ({
     <MovieCardError />
   ) : (
     <MovieCardSucces
+      genre_ids={genre_ids}
       movieId={movieId}
       vote_average={vote_average}
       poster_path={poster_path}

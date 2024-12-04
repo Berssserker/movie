@@ -12,8 +12,9 @@ const useFetchMovies = (text, page, tab) => {
     if (text) {
       setLoading(true)
     }
-    const debouncedFetchMovies = debounce(() => {
-      FetchMovies(setMoviesData, text, setError, setLoading, page)
+    const debouncedFetchMovies = debounce(async () => {
+      await FetchMovies(setMoviesData, text, setError, page)
+      setLoading(false)
     }, 1000)
     debouncedFetchMovies()
     return () => {

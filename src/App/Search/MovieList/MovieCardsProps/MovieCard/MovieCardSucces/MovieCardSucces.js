@@ -4,7 +4,17 @@ import { Card, Rate } from 'antd'
 import CardMeta from './CardMeta/CardMeta'
 import RateOrDeleteRating from './RateOrDeleteRating/RateOrDeleteRating'
 
-const MovieCardSucces = ({ movieId, vote_average, poster_path, overview, title, release_date, rating, guestId }) => {
+const MovieCardSucces = ({
+  genre_ids,
+  movieId,
+  vote_average,
+  poster_path,
+  overview,
+  title,
+  release_date,
+  rating,
+  guestId,
+}) => {
   const [ratingData, setRatingData] = useState(rating || 0)
 
   const url = 'https://image.tmdb.org/t/p/original'
@@ -19,6 +29,7 @@ const MovieCardSucces = ({ movieId, vote_average, poster_path, overview, title, 
   return (
     <Card cover={<img alt="Poster" src={fullImageUrl} />}>
       <CardMeta
+        genre_ids={genre_ids}
         ratingData={ratingData}
         vote_average={vote_average}
         overview={overview}
