@@ -48,6 +48,10 @@ div.ant-card div.ant-card-body {
     padding: 0;
 }
 
+div.ant-card.ant-card-bordered div.ant-card-meta {
+    margin-bottom: 50px;
+}
+
 .ant-card .ant-card-body .ant-card-meta .ant-card-meta-title {
     font-size: 20px;
     line-height: 28px;
@@ -61,7 +65,7 @@ div.ant-card div.ant-card-body {
     height: auto;
 }
 
-.description {
+.description-text {
     margin-top: 7px;
     height: 129px;
     font-size: 12px;

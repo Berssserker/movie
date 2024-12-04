@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, createContext } from 'react'
 
 import 'normalize.css'
 import './App.css'
@@ -18,6 +18,8 @@ import useFetchRatedMovies from './useFetchRatedMovies/useFetchRatedMovies'
 import ErrorMessageRate from './ErrorMessageRate/ErrorMessageRate'
 import useFetchGenres from './useFetchGenres/useFetchGenres'
 
+const GenresContext = createContext()
+
 const App = () => {
   const [rate, setRate] = useState(0)
   const [text, setText] = useState('')
@@ -34,24 +36,25 @@ const App = () => {
   return (
     <div className="movie">
       <Header setTab={setTab} />
-      {tab ? (
-        <Search
-          genres={genres}
-          guestId={guestId}
-          text={text}
-          setText={setText}
-          moviesData={moviesData}
-          ratedMoviesData={ratedMoviesData}
-        />
-      ) : !loading && !tab ? (
-        <Rated
-          guestId={guestId}
-          ratedMoviesData={ratedMoviesData}
-          ratedError={ratedError}
-          setRate={setRate}
-          setMovieId={setMovieId}
-        />
-      ) : null}
+      <GenresContext.Provider value={genres}>
+        {tab ? (
+          <Search
+            guestId={guestId}
+            text={text}
+            setText={setText}
+            moviesData={moviesData}
+            ratedMoviesData={ratedMoviesData}
+          />
+        ) : !loading && !tab ? (
+          <Rated
+            guestId={guestId}
+            ratedMoviesData={ratedMoviesData}
+            ratedError={ratedError}
+            setRate={setRate}
+            setMovieId={setMovieId}
+          />
+        ) : null}
+      </GenresContext.Provider>
       {loading ? (
         <Loading />
       ) : errorId ? (
