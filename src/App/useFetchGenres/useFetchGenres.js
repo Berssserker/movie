@@ -3,15 +3,15 @@ import { useState, useEffect } from 'react'
 import GetGenres from './GetGenres/GetGenres'
 
 const useFetchGenres = () => {
-  const [genres, setGenres] = useState([])
+  const [genresData, setGenresData] = useState([])
   useEffect(() => {
     const Fetch = async () => {
       try {
         const body = await GetGenres()
         console.log(body.genres)
-        setGenres(body.genres || [])
+        setGenresData(body.genres || [])
         if (!body.genres) {
-          setGenres([])
+          setGenresData([])
         }
       } catch (error) {
         console.log(error)
@@ -19,7 +19,7 @@ const useFetchGenres = () => {
     }
     Fetch()
   }, [])
-  return genres
+  return genresData
 }
 
 export default useFetchGenres
