@@ -28,7 +28,7 @@ const App = () => {
   const [movieId, setMovieId] = useState(0)
 
   const genres = useFetchGenres()
-  const { isOnline } = useNetworStatus()
+  const isOnline = useNetworStatus()
   const { guestId, errorId } = useFetchId()
   const { moviesData, error, loading, setLoading } = useFetchMovies(text, page, tab)
   const { ratedMoviesData, ratedError } = useFetchRatedMovies(guestId, tab, rate, movieId, setLoading)

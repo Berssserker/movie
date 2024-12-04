@@ -11,7 +11,7 @@ const useNetworkStatus = () => {
       clearInterval(intervalId)
     }
   }, [isOnline])
-  return { isOnline }
+  return isOnline
 }
 
 export default useNetworkStatus
