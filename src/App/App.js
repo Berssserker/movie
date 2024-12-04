@@ -18,14 +18,15 @@ import useFetchRatedMovies from './useFetchRatedMovies/useFetchRatedMovies'
 import ErrorMessageRate from './ErrorMessageRate/ErrorMessageRate'
 
 const App = () => {
-  const [text, setText] = useState('')
-  const [page, setPage] = useState('1')
-  const [tab, setTab] = useState(true)
   const [rate, setRate] = useState(0)
+  const [text, setText] = useState('')
+  const [tab, setTab] = useState(true)
+  const [page, setPage] = useState('1')
   const [movieId, setMovieId] = useState(0)
-  const { moviesData, errorData, loading, setLoading } = useFetchMovies(text, page, tab)
+
   const { isOnline } = useNetworStatus()
   const { guestId, errorId } = useFetchId()
+  const { moviesData, errorData, loading, setLoading } = useFetchMovies(text, page, tab)
   const { ratedMoviesData, ratedMoviesError } = useFetchRatedMovies(guestId, tab, rate, movieId, setLoading)
 
   return (

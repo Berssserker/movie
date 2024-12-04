@@ -10,7 +10,7 @@ const useFetchRatedMovies = (guestId, tab, rate, movieId, setLoading) => {
       if (!tab && guestId) {
         try {
           setLoading(true)
-          const body = await FetchRatedMovies(guestId, setRatedMoviesError)
+          const body = await FetchRatedMovies(guestId)
           setRatedMoviesData(body.results || [])
           setLoading(false)
           if (!body.results) {
