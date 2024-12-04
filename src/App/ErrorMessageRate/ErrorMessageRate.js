@@ -5,7 +5,7 @@ const ErrorMessageRate = () => {
     <Alert
       style={{ marginBottom: '45vh' }}
       message="Ooops!"
-      description="Failed to create a guest session."
+      description="We have not found the films you rated."
       type="error"
       showIcon
     />
