@@ -39,6 +39,7 @@ const App = () => {
       <GenresContext.Provider value={genres}>
         {tab ? (
           <Search
+            setPage={setPage}
             guestId={guestId}
             text={text}
             setText={setText}

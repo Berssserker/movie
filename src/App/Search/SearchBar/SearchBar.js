@@ -2,8 +2,9 @@ import React from 'react'
 
 import './SearchBar.css'
 
-const SearchBar = ({ text, setText }) => {
+const SearchBar = ({ text, setText, setPage }) => {
   const onSearch = (value) => {
+    setPage('1')
     setText(value)
   }
   return (
