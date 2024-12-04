@@ -16,6 +16,7 @@ import useFetchId from './useFetchId/useFetchId'
 import Rated from './Rated/Rated'
 import useFetchRatedMovies from './useFetchRatedMovies/useFetchRatedMovies'
 import ErrorMessageRate from './ErrorMessageRate/ErrorMessageRate'
+import useFetchGenres from './useFetchGenres/useFetchGenres'
 
 const App = () => {
   const [rate, setRate] = useState(0)
@@ -24,6 +25,7 @@ const App = () => {
   const [page, setPage] = useState('1')
   const [movieId, setMovieId] = useState(0)
 
+  const genres = useFetchGenres()
   const { isOnline } = useNetworStatus()
   const { guestId, errorId } = useFetchId()
   const { moviesData, errorData, loading, setLoading } = useFetchMovies(text, page, tab)
@@ -34,6 +36,7 @@ const App = () => {
       <Header setTab={setTab} />
       {tab ? (
         <Search
+          genres={genres}
           guestId={guestId}
           text={text}
           setText={setText}
