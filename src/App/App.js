@@ -28,8 +28,8 @@ const App = () => {
   const genres = useFetchGenres()
   const { isOnline } = useNetworStatus()
   const { guestId, errorId } = useFetchId()
-  const { moviesData, errorData, loading, setLoading } = useFetchMovies(text, page, tab)
-  const { ratedMoviesData, ratedMoviesError } = useFetchRatedMovies(guestId, tab, rate, movieId, setLoading)
+  const { moviesData, error, loading, setLoading } = useFetchMovies(text, page, tab)
+  const { ratedMoviesData, ratedError } = useFetchRatedMovies(guestId, tab, rate, movieId, setLoading)
 
   return (
     <div className="movie">
@@ -47,7 +47,7 @@ const App = () => {
         <Rated
           guestId={guestId}
           ratedMoviesData={ratedMoviesData}
-          ratedMoviesError={ratedMoviesError}
+          ratedError={ratedError}
           setRate={setRate}
           setMovieId={setMovieId}
         />
@@ -58,9 +58,9 @@ const App = () => {
         <ErrorMessageId />
       ) : !isOnline ? (
         <OfflineMessage />
-      ) : errorData && tab ? (
+      ) : error && tab ? (
         <ErrorMessageData />
-      ) : ratedMoviesError && !tab ? (
+      ) : ratedError && !tab ? (
         <ErrorMessageRate />
       ) : null}
       {tab ? <Footer page={page} setPage={setPage} /> : null}
