@@ -2,26 +2,27 @@ import { useState, useEffect } from 'react'
 
 import FetchRatedMovies from './FetchRatedMovies/FetchRatedMovies'
 
-const useFetchRatedMovies = (guestId, tab, rate, movieId, setLoading) => {
+const useFetchRatedMovies = (guestId, tab, rate, movieId) => {
   const [ratedMoviesData, setRatedMoviesData] = useState([])
+  const [loadingRated, setLoadingRated] = useState(false)
   const [ratedError, setRatedError] = useState(false)
   useEffect(() => {
     const Fetch = async () => {
       if (!tab && guestId) {
         try {
-          setLoading(true)
+          setLoadingRated(true)
           const body = await FetchRatedMovies(guestId)
           setRatedMoviesData(body.results || [])
-          setLoading(false)
+          setLoadingRated(false)
           if (!body.results) {
-            setLoading(false)
+            setLoadingRated(false)
             setRatedError(true)
           } else {
-            setLoading(false)
+            setLoadingRated(false)
             setRatedError(false)
           }
         } catch (error) {
-          setLoading(false)
+          setLoadingRated(false)
           setRatedError(true)
           setRatedMoviesData([])
         }
@@ -29,7 +30,7 @@ const useFetchRatedMovies = (guestId, tab, rate, movieId, setLoading) => {
     }
     Fetch()
   }, [tab, rate, movieId, guestId])
-  return { ratedMoviesData, ratedError }
+  return { ratedMoviesData, ratedError, loadingRated }
 }
 
 export default useFetchRatedMovies

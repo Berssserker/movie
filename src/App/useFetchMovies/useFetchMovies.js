@@ -21,7 +21,7 @@ const useFetchMovies = (text, page, tab) => {
       debouncedFetchMovies.cancel()
     }
   }, [text, page, tab])
-  return { moviesData, loading, error, setLoading }
+  return { moviesData, loading, error }
 }
 
 export default useFetchMovies
