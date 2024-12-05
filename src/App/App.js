@@ -34,7 +34,7 @@ const App = () => {
   const { ratedMoviesData, ratedError, loadingRated } = useFetchRatedMovies(guestId, tab, rate, movieId)
 
   return (
-    <div className="movie">
+    <main className="movie">
       <Header setTab={setTab} />
       <GenresContext.Provider value={genres}>
         {tab ? (
@@ -68,7 +68,7 @@ const App = () => {
         <ErrorMessageRate />
       ) : null}
       {tab ? <Footer page={page} setPage={setPage} /> : null}
-    </div>
+    </main>
   )
 }
 
