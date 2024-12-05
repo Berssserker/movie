@@ -1,6 +1,8 @@
 import React from 'react'
 import { format } from 'date-fns'
 
+import './CardDescription.css'
+
 import MovieGenres from './MovieGenres/MovieGenres'
 
 const CardDescription = ({ genre_ids, overview, release_date }) => {

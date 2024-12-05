@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Card, Rate } from 'antd'
 
+import './MovieCardSucces.css'
+
 import CardMeta from './CardMeta/CardMeta'
 import RateOrDeleteRating from './RateOrDeleteRating/RateOrDeleteRating'
 

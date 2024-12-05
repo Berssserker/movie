@@ -1,0 +1,25 @@
+.ant-card .ant-card-body .ant-card-meta .ant-card-meta-description {
+    width: 228px;
+}
+
+.description-text {
+    margin-top: 7px;
+    font-size: 12px;
+    line-height: 22px;
+    height: 132px;
+    font-family: inter UI;
+    overflow: hidden; /* Скрыть переполнение */
+    display: -webkit-box; /* Для многострочного текста */
+    -webkit-box-orient: vertical; /* Вертикальная ориентация */
+    text-overflow: ellipsis; /* Добавить троеточие */
+    -webkit-line-clamp: 6; /* Ограничение на 6 строк */
+    line-clamp: 6;  
+}
+
+.date {
+    width: 100%;
+    color: #827E7E;
+    font-size: 12px;
+    line-height: 22px;
+    font-family: inter UI;
+}
