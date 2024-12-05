@@ -13,7 +13,11 @@ div .ant-alert {
 }
 
 .genre {
+    max-width: 228px;
+    height: 22px;
     margin-top: 7px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 div.ant-card {
@@ -48,10 +52,6 @@ div.ant-card div.ant-card-body {
     padding: 0;
 }
 
-div.ant-card.ant-card-bordered div.ant-card-meta {
-    margin-bottom: 50px;
-}
-
 .ant-card .ant-card-body .ant-card-meta .ant-card-meta-title {
     font-size: 20px;
     line-height: 28px;
@@ -62,21 +62,20 @@ div.ant-card.ant-card-bordered div.ant-card-meta {
 
 .ant-card .ant-card-body .ant-card-meta .ant-card-meta-description {
     width: 228px;
-    height: auto;
 }
 
 .description-text {
     margin-top: 7px;
-    height: 129px;
     font-size: 12px;
     line-height: 22px;
+    height: 132px;
     font-family: inter UI;
     overflow: hidden; /* Скрыть переполнение */
     display: -webkit-box; /* Для многострочного текста */
     -webkit-box-orient: vertical; /* Вертикальная ориентация */
-    -webkit-line-clamp: 6; /* Ограничение на 6 строк */
-    line-clamp: 6;
     text-overflow: ellipsis; /* Добавить троеточие */
+    -webkit-line-clamp: 6; /* Ограничение на 6 строк */
+    line-clamp: 6;  
 }
 
 .genre span {
@@ -124,8 +123,8 @@ div.ant-card.ant-card-bordered div.ant-card-meta {
     line-height: 22px;
 }
 
-div.ant-card ul.ant-rate {
-    margin-top: 20px;
+div.ant-card div.ant-card-body ul.ant-rate {
+    
 }
 
 div.ant-card ul.ant-rate li.ant-rate-star {

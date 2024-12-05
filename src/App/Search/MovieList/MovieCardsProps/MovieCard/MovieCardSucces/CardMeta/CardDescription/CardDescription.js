@@ -5,7 +5,7 @@ import MovieGenres from './MovieGenres/MovieGenres'
 
 const CardDescription = ({ genre_ids, overview, release_date }) => {
   return (
-    <div className="description">
+    <div>
       <div className="date">
         {release_date !== '' ? format(new Date(release_date), 'MMMM d, yyyy') : 'Date not found :<'}
       </div>
