@@ -1,0 +1,35 @@
+.title {
+    width: 100%;
+    display: flex;
+}
+
+.title span:first-child {
+    overflow: hidden;
+    max-width: 80%;
+    text-overflow: ellipsis;
+}
+
+.title span:nth-child(2) {
+    padding-top: 2px;
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    margin: 0 9px 0 auto;
+    max-width: 112px;
+    border: 2px solid silver;
+    font-family: Inter;    
+    text-align: center;
+    vertical-align:bottom;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.ant-card .ant-card-body .ant-card-meta .ant-card-meta-title {
+    font-size: 20px;
+    line-height: 28px;
+    font-family: inter UI;
+    margin: 0;
+    width: 252px;
+}

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './CardTitle.css'
+
 const CardTitle = ({ ratingData, title, vote_average }) => {
   return (
     <div className="title">

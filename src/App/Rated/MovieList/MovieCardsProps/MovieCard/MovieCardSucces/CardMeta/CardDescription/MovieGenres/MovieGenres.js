@@ -1,5 +1,7 @@
 import { useContext } from 'react'
 
+import './MovieGenres.css'
+
 import { GenresContext } from '../../../../../../../../App'
 
 const MovieGenres = ({ genre_ids }) => {
