@@ -8,7 +8,6 @@ const useFetchGenres = () => {
     const Fetch = async () => {
       try {
         const body = await GetGenres()
-        console.log(body.genres)
         setGenresData(body.genres || [])
         if (!body.genres) {
           setGenresData([])

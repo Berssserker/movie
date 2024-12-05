@@ -15,7 +15,6 @@ const RateMovie = async (guestId, movieId, rating = 0) => {
     const error = await response.json()
     throw new Error(`${error.status}, ${error.statusText}`)
   }
-  console.log('Фильм успешно оценен!')
 }
 
 export default RateMovie

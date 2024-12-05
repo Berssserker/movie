@@ -8,7 +8,6 @@ const DeleteRateMovie = async (guestId, movieId) => {
     const error = await response.json()
     console.log(error)
   }
-  console.log('Оценка фильма успешно удалена')
 }
 
 export default DeleteRateMovie

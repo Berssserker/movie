@@ -7,7 +7,6 @@ const FetchMovies = async (setMoviesData, text, setError, page) => {
     await delay(3000)
     const data = await GetMovie(text, page)
     setMoviesData(data.results || [])
-    console.log(data.results)
     if (data.results !== null && data.results.length === 0 && text) {
       setError(true)
     }
