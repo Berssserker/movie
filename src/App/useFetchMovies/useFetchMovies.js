@@ -3,6 +3,10 @@ import debounce from 'lodash.debounce'
 
 import FetchMovies from './FetchMovies/FetchMovies'
 
+const customDebounce = (func, wait) => {
+  return debounce(func, wait)
+}
+
 const useFetchMovies = (text, page, tab) => {
   const [moviesData, setMoviesData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -12,9 +16,8 @@ const useFetchMovies = (text, page, tab) => {
     if (text) {
       setLoading(true)
     }
-    const debouncedFetchMovies = debounce(async () => {
-      await FetchMovies(setMoviesData, text, setError, page)
-      setLoading(false)
+    const debouncedFetchMovies = customDebounce(() => {
+      FetchMovies(setError, setMoviesData, setLoading, text, page)
     }, 1000)
     debouncedFetchMovies()
     return () => {

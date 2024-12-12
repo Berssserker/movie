@@ -8,8 +8,8 @@ const GetMovie = async (query, page) => {
     }
     const body = await response.json()
     return body
-  } catch (error) {
-    console.log(error)
+  } catch {
+    return {}
   }
 }
 
