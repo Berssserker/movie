@@ -13,13 +13,13 @@ const useFetchMovies = (text, page, tab) => {
   const [error, setError] = useState(false)
   useEffect(() => {
     setMoviesData([])
-    if (text) {
-      setLoading(true)
-    }
     const debouncedFetchMovies = customDebounce(() => {
       FetchMovies(setError, setMoviesData, setLoading, text, page)
     }, 1000)
-    debouncedFetchMovies()
+    if (text) {
+      setLoading(true)
+      debouncedFetchMovies()
+    }
     return () => {
       debouncedFetchMovies.cancel()
     }
