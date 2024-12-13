@@ -30,8 +30,8 @@ const App = () => {
   const genres = useFetchGenres()
   const isOnline = useNetworStatus()
   const { guestId, errorId } = useFetchId()
-  const { moviesData, error, loading, setLoading } = useFetchMovies(text, page, tab)
-  const { ratedMoviesData, ratedError } = useFetchRatedMovies(guestId, tab, rate, movieId, setLoading)
+  const { ratedMoviesData, ratedError, ratedLoading } = useFetchRatedMovies(guestId, tab, rate, movieId)
+  const { moviesData, error, loading } = useFetchMovies(text, page, tab, ratedMoviesData)
 
   return (
     <main className="movie">
@@ -56,7 +56,7 @@ const App = () => {
           />
         ) : null}
       </GenresContext.Provider>
-      {loading ? (
+      {loading || ratedLoading ? (
         <Loading />
       ) : errorId ? (
         <ErrorMessageId />

@@ -1,9 +1,8 @@
 import GetRatedMovies from './GetRatedMovies/GetRatedMovies'
 
-const FetchRatedMovies = async (guestId, setRatedMoviesData, setLoading, setRatedError) => {
+const FetchRatedMovies = async (guestId, setRatedMoviesData, setRatedError, setLoading) => {
   const fetch = async () => {
-    setLoading(true)
-    const body = await GetRatedMovies(guestId, setRatedError, setLoading)
+    const body = await GetRatedMovies(guestId, setRatedError)
     setRatedMoviesData(body.results || [])
   }
   await fetch()
@@ -11,6 +10,15 @@ const FetchRatedMovies = async (guestId, setRatedMoviesData, setLoading, setRate
   await fetch()
   await fetch()
   await fetch()
+  await fetch()
+  await fetch()
+  await fetch()
+  await fetch()
+  await fetch()
+  await fetch()
+  await fetch()
+  await fetch()
+  setLoading(false)
 }
 
 export default FetchRatedMovies

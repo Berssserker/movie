@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card, Rate } from 'antd'
+import { Card, Rate, Spin } from 'antd'
 
 import './MovieCardSucces.css'
 
@@ -18,14 +18,17 @@ const MovieCardSucces = ({
   guestId,
 }) => {
   const [ratingData, setRatingData] = useState(rating || 0)
+  const [cardLoading, setCardLoading] = useState(false)
 
   const url = 'https://image.tmdb.org/t/p/original'
   const plug = 'https://i1.sndcdn.com/artworks-Bg54D6aCmjdNZLMh-9lWVgg-t500x500.jpg'
   const fullImageUrl = poster_path ? url + poster_path : plug
 
-  const ChangeRating = (e) => {
+  const ChangeRating = async (e) => {
+    setCardLoading(true)
+    await RateOrDeleteRating(guestId, movieId, e)
+    setCardLoading(false)
     setRatingData(e)
-    RateOrDeleteRating(guestId, movieId, e)
   }
 
   return (
@@ -38,7 +41,7 @@ const MovieCardSucces = ({
         title={title}
         release_date={release_date}
       />
-      <Rate value={ratingData} count={10} allowHalf onChange={(e) => ChangeRating(e)} />
+      {!cardLoading ? <Rate value={ratingData} count={10} allowHalf onChange={(e) => ChangeRating(e)} /> : <Spin />}
     </Card>
   )
 }

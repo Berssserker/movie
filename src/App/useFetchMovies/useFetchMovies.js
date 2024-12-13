@@ -7,7 +7,7 @@ const customDebounce = (func, wait) => {
   return debounce(func, wait)
 }
 
-const useFetchMovies = (text, page, tab) => {
+const useFetchMovies = (text, page, tab, ratedMoviesData) => {
   const [moviesData, setMoviesData] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -23,7 +23,7 @@ const useFetchMovies = (text, page, tab) => {
     return () => {
       debouncedFetchMovies.cancel()
     }
-  }, [text, page, tab])
+  }, [text, page, tab, ratedMoviesData])
   return { moviesData, loading, error, setLoading }
 }
 
